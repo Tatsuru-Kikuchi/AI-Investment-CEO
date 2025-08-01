@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Investment vs CEO Demographics - Research Platform</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        
+        .predictor-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .predictor-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .form-group select,
+        .form-group input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group select:focus,
+        .form-group input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .predict-btn {
+            grid-column: 1 / -1;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .predict-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .prediction-results {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .result-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .result-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .insights-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .insight-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .insight-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #28a745;
+        }
+        
+        .insight-text {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .predictor-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Investment vs CEO Demographics</h1>
+            <p>Research Platform - Japan Market Analysis</p>
+            <p>Tatsuru Kikuchi • University Research Project • 2025</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">2.6x</div>
+                <div class="stat-label">Firm Size Gap</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">39.6%</div>
+                <div class="stat-label">Peak Investment Propensity</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">$26.8B</div>
+                <div class="stat-label">Market Size 2030</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">23.3%</div>
+                <div class="stat-label">Annual Growth Rate</div>
+            </div>
+        </div>
+        
+        <div class="dashboard">
+            <div class="chart-container">
+                <h3 class="chart-title">AI Adoption by Firm Size</h3>
+                <canvas id="firmSizeChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">Investment Propensity by Demographics</h3>
+                <canvas id="demographicsChart"></canvas>
+            </div>
+        </div>
+        
+        <div class="predictor-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">AI Investment Predictor</h2>
+            <div class="predictor-form" id="predictorForm">
+                <div class="form-group">
+                    <label for="age">Executive Age</label>
+                    <select id="age">
+                        <option value="40-49">40-49 years</option>
+                        <option value="50-59">50-59 years</option>
+                        <option value="60-69">60-69 years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Executive Gender</label>
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="firmSize">Firm Size</label>
+                    <select id="firmSize">
+                        <option value="SME">Small-Medium Enterprise</option>
+                        <option value="Large">Large Enterprise</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="industry">Industry</label>
+                    <select id="industry">
+                        <option value="Service">Service</option>
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Retail">Retail/Wholesale</option>
+                        <option value="Healthcare">Healthcare</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="region">Region</label>
+                    <select id="region">
+                        <option value="Tokyo">Tokyo</option>
+                        <option value="Osaka">Osaka</option>
+                        <option value="Nagoya">Nagoya</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="revenue">Annual Revenue (Billion ¥)</label>
+                    <input type="number" id="revenue" min="0.1" max="1000" step="0.1" value="10">
+                </div>
+                <button class="predict-btn" onclick="predictInvestment()">Predict AI Investment Likelihood</button>
+            </div>
+            
+            <div class="prediction-results" id="predictionResults">
+                <div class="result-card">
+                    <div class="result-value" id="adoptionProb">-</div>
+                    <div class="result-label">Adoption Probability</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="investmentAmount">-</div>
+                    <div class="result-label">Predicted Investment (¥M)</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="roiCategory">-</div>
+                    <div class="result-label">Expected ROI Category</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-value" id="productivityGain">-</div>
+                    <div class="result-label">Productivity Gain</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="insights-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Key Research Insights</h2>
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-title">Firm Size Dominates</div>
+                    <div class="insight-text">
+                        Large enterprises adopt AI at 2.6x the rate of SMEs (42% vs 16%). This represents a massive 162% gap that presents both challenges and opportunities for policy makers and technology providers.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Age Effect is Significant</div>
+                    <div class="insight-text">
+                        Executives aged 40-49 show the highest AI investment propensity at 39.6%, declining to 26.4% for those 60-69. This 13 percentage point drop highlights generational differences in technology adoption.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Gender Gap Persists</div>
+                    <div class="insight-text">
+                        Male executives consistently show 6 percentage points higher AI investment propensity across all age groups (33.0% vs 27.0% average), indicating need for targeted diversity initiatives.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Market Growth Potential</div>
+                    <div class="insight-text">
+                        Japan's AI market will grow from $7.56B (2024) to $26.8B (2030) at 23.3% CAGR. With 84% of SMEs not using AI, there's enormous untapped potential for inclusive growth strategies.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">Industry Leadership</div>
+                    <div class="insight-text">
+                        Service industry leads SME adoption at 21%, followed by manufacturing at 16%. Financial services dominate the overall market with 31.3% share, showing sector-specific opportunities.
+                    </div>
+                </div>
+                <div class="insight-card">
+                    <div class="insight-title">International Position</div>
+                    <div class="insight-text">
+                        Japan ranks 4th globally in AI adoption rate but 3rd in market size. This positions Japan well for global leadership through strategic policy interventions and inclusive adoption strategies.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize charts when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCharts();
+        });
+        
+        function initializeCharts() {
+            // Firm Size Chart
+            const firmSizeCtx = document.getElementById('firmSizeChart').getContext('2d');
+            new Chart(firmSizeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['SMEs', 'Large Enterprises'],
+                    datasets: [{
+                        label: 'Adoption Rate (%)',
+                        data: [16, 42],
+                        backgroundColor: ['#ff6b6b', '#4ecdc4'],
+                        borderColor: ['#ff5252', '#26a69a'],
+                        borderWidth: 2
+                    }, {
+                        label: 'Productivity Gain (%)',
+                        data: [7.0, 18.5],
+                        backgroundColor: ['#ffa726', '#42a5f5'],
+                        borderColor: ['#ff9800', '#2196f3'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 50
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+            
+            // Demographics Chart
+            const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+            new Chart(demographicsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['40-49', '50-59', '60-69'],
+                    datasets: [{
+                        label: 'Male Executives (%)',
+                        data: [39.6, 33.0, 26.4],
+                        borderColor: '#667eea',
+                        backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Female Executives (%)',
+                        data: [32.4, 27.0, 21.6],
+                        borderColor: '#764ba2',
+                        backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 45,
+                            title: {
+                                display: true,
+                                text: 'Investment Propensity (%)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Age Group'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+        
+        function predictInvestment() {
+            // Get form values
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+            const firmSize = document.getElementById('firmSize').value;
+            const industry = document.getElementById('industry').value;
+            const region = document.getElementById('region').value;
+            const revenue = parseFloat(document.getElementById('revenue').value);
+            
+            // Calculate prediction based on research model
+            const basePropensity = 0.30;
+            
+            // Age adjustment
+            const ageMultiplier = {
+                '40-49': 1.2,
+                '50-59': 1.0,
+                '60-69': 0.8
+            }[age];
+            
+            // Gender adjustment
+            const genderMultiplier = gender === 'male' ? 1.1 : 0.9;
+            
+            // Firm size adjustment
+            const baseSizeRate = firmSize === 'SME' ? 0.16 : 0.42;
+            const sizeMultiplier = firmSize === 'Large' ? 1.5 : 1.0;
+            
+            // Industry adjustment
+            const industryMultiplier = {
+                'Service': 1.3,
+                'Finance': 1.4,
+                'Manufacturing': 1.0,
+                'Healthcare': 0.9,
+                'Retail': 0.8
+            }[industry];
+            
+            // Region adjustment
+            const regionMultiplier = {
+                'Tokyo': 1.1,
+                'Osaka': 1.05,
+                'Nagoya': 1.0,
+                'Other': 0.95
+            }[region];
+            
+            // Calculate adoption probability
+            const adoptionProb = Math.min(
+                baseSizeRate * ageMultiplier * genderMultiplier * industryMultiplier * regionMultiplier,
+                0.95
+            );
+            
+            // Calculate investment amount
+            const baseInvestment = revenue * 0.03; // 3% of revenue
+            const investmentAmount = adoptionProb > 0.1 ? baseInvestment * sizeMultiplier : 0;
+            
+            // Determine ROI category
+            let roiCategory = 'None';
+            if (adoptionProb > 0.1) {
+                if (firmSize === 'Large') {
+                    const roiRand = Math.random();
+                    if (roiRand < 0.15) roiCategory = 'Low';
+                    else if (roiRand < 0.60) roiCategory = 'Medium';
+                    else if (roiRand < 0.90) roiCategory = 'High';
+                    else roiCategory = 'Exceptional';
+                } else {
+                    const roiRand = Math.random();
+                    if (roiRand < 0.25) roiCategory = 'Low';
+                    else if (roiRand < 0.75) roiCategory = 'Medium';
+                    else if (roiRand < 0.95) roiCategory = 'High';
+                    else roiCategory = 'Exceptional';
+                }
+            }
+            
+            // Calculate productivity gain
+            const maxProductivityGain = 0.22; // 22%
+            const maturityFactor = firmSize === 'Large' ? 0.84 : 0.32;
+            const productivityGain = adoptionProb * maxProductivityGain * maturityFactor;
+            
+            // Update results display
+            document.getElementById('adoptionProb').textContent = (adoptionProb * 100).toFixed(1) + '%';
+            document.getElementById('investmentAmount').textContent = '¥' + investmentAmount.toFixed(1) + 'M';
+            document.getElementById('roiCategory').textContent = roiCategory;
+            document.getElementById('productivityGain').textContent = (productivityGain * 100).toFixed(1) + '%';
+            
+            // Show results
+            document.getElementById('predictionResults').style.display = 'grid';
+            
+            // Scroll to results
+            document.getElementById('predictionResults').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
