@@ -7,6 +7,19 @@
 ![Data Sources](https://img.shields.io/badge/Data%20Sources-7%20Major%20Surveys-orange)
 ![Market Coverage](https://img.shields.io/badge/Market%20Coverage-Japan%20%2B%2011%20Countries-purple)
 
+## 🚀 Live Interactive Dashboard
+
+**🎯 Access Our Research Platform:**
+- **Main Dashboard**: [Launch Interactive Platform](https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/dashboard.html)
+- **Research Portal**: [Comprehensive Analysis](https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/index.html)
+
+### Dashboard Features
+- **Real-time AI Investment Predictor** - Input executive demographics for instant adoption predictions
+- **Interactive Data Visualizations** - Explore firm size, age, and gender impacts on AI adoption
+- **Market Scenario Modeling** - Compare different economic and policy scenarios
+- **International Benchmarking** - Japan vs 11 global markets comparison
+- **Policy Impact Simulator** - Test various intervention strategies
+
 ## 🎯 Project Overview
 
 This research project investigates how executive demographics (gender & age) affect AI investment decisions in Japanese firms, analyzing the impact of firm size on AI service implementation. Through comprehensive data analysis of major industry surveys and market research, we provide actionable insights for policymakers, business leaders, and technology providers.
@@ -54,6 +67,7 @@ AI-Investment-CEO/
 │   ├── predictive_models.py   # Machine learning models
 │   └── simulation_engine.py   # Monte Carlo simulation system
 ├── 📁 web/                    # Interactive web platform
+│   ├── dashboard.html         # Main interactive dashboard
 │   └── index.html            # Research visualization platform
 ├── EXECUTIVE_SUMMARY.md       # Comprehensive research report
 └── README.md                  # This file
@@ -102,20 +116,32 @@ AI-Investment-CEO/
 - **Competitive Gap**: 16 points behind US adoption rate
 - **Strategic Opportunity**: Strong position for policy-driven acceleration
 
-## 🚀 Interactive Platform
+## 🌐 How to Use the Interactive Platform
 
-### Web-Based Research Dashboard
-Explore our interactive research platform at `web/index.html` featuring:
-- **Real-time AI Investment Predictor**
-- **Interactive Data Visualizations**
-- **Demographic Analysis Tools**
-- **Market Scenario Modeling**
+### Getting Started with the Dashboard
+1. **Visit the Live Dashboard**: [https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/dashboard.html](https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/dashboard.html)
 
-### Features
-- Predict AI adoption likelihood based on executive demographics
-- Visualize firm size and demographic impacts
-- Explore market growth scenarios
-- Access comprehensive research insights
+2. **Use the AI Investment Predictor**:
+   - Select executive age range
+   - Choose gender
+   - Pick firm size category
+   - Get instant AI adoption probability
+
+3. **Explore Data Visualizations**:
+   - Interactive charts showing demographic impacts
+   - Firm size comparison analysis
+   - Market growth projections
+   - International benchmarking
+
+4. **Run Scenario Analysis**:
+   - Test different policy interventions
+   - Compare economic impacts
+   - Analyze ROI projections
+
+### Alternative Access Methods
+- **Local Setup**: Clone repository and open `web/dashboard.html`
+- **Research Portal**: Access comprehensive analysis at `web/index.html`
+- **Mobile Friendly**: All dashboards optimized for mobile access
 
 ## 🏛️ Policy Recommendations
 
@@ -184,16 +210,16 @@ Explore our interactive research platform at `web/index.html` featuring:
 ## 🔗 Usage Instructions
 
 ### Getting Started
-1. **Clone the repository**:
+1. **Access Live Platform**:
+   - **Main Dashboard**: [Launch Here](https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/dashboard.html)
+   - No installation required - works in any modern browser
+
+2. **Local Development Setup**:
    ```bash
    git clone https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO.git
    cd AI-Investment-CEO
+   # Open web/dashboard.html in your browser
    ```
-
-2. **Explore the interactive platform**:
-   - Open `web/index.html` in your browser
-   - Use the AI Investment Predictor tool
-   - Explore data visualizations and insights
 
 3. **Run advanced analytics**:
    ```bash
@@ -283,6 +309,8 @@ If you use this research in your work, please cite:
 
 **© 2025 Tatsuru Kikuchi. This research is made available for academic and policy purposes. For commercial use, please contact the author.**
 
-**Repository**: https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO  
-**Status**: Active Development and Continuous Updates  
-**Last Updated**: January 2025
+**🔗 Quick Links:**
+- **Live Dashboard**: [https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/dashboard.html](https://tatsuru-kikuchi.github.io/AI-Investment-CEO/web/dashboard.html)
+- **Repository**: https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO  
+- **Status**: Active Development and Continuous Updates  
+- **Last Updated**: January 2025
