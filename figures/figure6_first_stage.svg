@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Figure 6: First Stage Results</title>
+    <style>
+        .figure { font-family: 'Times New Roman', serif; }
+        .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
+        .axis-label { font-size: 12px; text-anchor: middle; }
+        .tick-label { font-size: 10px; text-anchor: middle; }
+        .bar { stroke: #000; stroke-width: 1; }
+        .notes { font-size: 10px; }
+    </style>
+</head>
+<body>
+    <svg width="600" height="500" class="figure">
+        <!-- Title -->
+        <text x="300" y="30" class="title">Figure 6: First Stage: CEO Characteristics and AI Investment Propensity</text>
+        
+        <!-- Zero line -->
+        <line x1="50" y1="280" x2="550" y2="280" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+        
+        <!-- Bars -->
+        <!-- CEO Age (negative effect) -->
+        <rect x="120" y="280" width="80" height="30" fill="#ef4444" class="bar"/>
+        
+        <!-- Technical Education (positive effect) -->
+        <rect x="240" y="170" width="80" height="110" fill="#3b82f6" class="bar"/>
+        
+        <!-- Technology Experience (positive effect) -->
+        <rect x="360" y="200" width="80" height="80" fill="#10b981" class="bar"/>
+        
+        <!-- Error bars -->
+        <line x1="160" y1="270" x2="160" y2="320" stroke="#000" stroke-width="2"/>
+        <line x1="280" y1="160" x2="280" y2="180" stroke="#000" stroke-width="2"/>
+        <line x1="400" y1="190" x2="400" y2="210" stroke="#000" stroke-width="2"/>
+        
+        <!-- Y-axis -->
+        <line x1="50" y1="350" x2="50" y2="120" stroke="#000" stroke-width="1"/>
+        <text x="25" y="235" class="axis-label" transform="rotate(-90, 25, 235)">Effect on AI Investment (%)</text>
+        
+        <!-- Y-axis ticks -->
+        <line x1="45" y1="350" x2="55" y2="350" stroke="#000"/>
+        <text x="40" y="355" class="tick-label" text-anchor="end">-10</text>
+        <line x1="45" y1="315" x2="55" y2="315" stroke="#000"/>
+        <text x="40" y="320" class="tick-label" text-anchor="end">-5</text>
+        <line x1="45" y1="280" x2="55" y2="280" stroke="#000"/>
+        <text x="40" y="285" class="tick-label" text-anchor="end">0</text>
+        <line x1="45" y1="245" x2="55" y2="245" stroke="#000"/>
+        <text x="40" y="250" class="tick-label" text-anchor="end">5</text>
+        <line x1="45" y1="210" x2="55" y2="210" stroke="#000"/>
+        <text x="40" y="215" class="tick-label" text-anchor="end">10</text>
+        <line x1="45" y1="175" x2="55" y2="175" stroke="#000"/>
+        <text x="40" y="180" class="tick-label" text-anchor="end">15</text>
+        <line x1="45" y1="140" x2="55" y2="140" stroke="#000"/>
+        <text x="40" y="145" class="tick-label" text-anchor="end">20</text>
+        
+        <!-- X-axis -->
+        <line x1="50" y1="350" x2="500" y2="350" stroke="#000" stroke-width="1"/>
+        <text x="275" y="390" class="axis-label">CEO Characteristic</text>
+        
+        <!-- X-axis labels -->
+        <text x="160" y="370" class="tick-label">CEO Age</text>
+        <text x="160" y="385" class="tick-label">(per year)</text>
+        <text x="280" y="370" class="tick-label">Technical</text>
+        <text x="280" y="385" class="tick-label">Education</text>
+        <text x="400" y="370" class="tick-label">Technology</text>
+        <text x="400" y="385" class="tick-label">Experience</text>
+        
+        <!-- Value labels -->
+        <text x="160" y="325" class="tick-label">-1.5%***</text>
+        <text x="280" y="160" class="tick-label">22.3%***</text>
+        <text x="400" y="190" class="tick-label">16.2%**</text>
+        
+        <!-- Notes -->
+        <text x="50" y="430" class="notes">Notes: First-stage results showing CEO characteristics predicting AI investment propensity.</text>
+        <text x="50" y="445" class="notes">F-statistic = 24.7, indicating strong instruments. *** p&lt;0.01, ** p&lt;0.05. N=547 firms.</text>
+        <text x="50" y="460" class="notes">Younger, technically-educated CEOs with tech experience more likely to invest in AI.</text>
+    </svg>
+</body>
+</html>
