@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Manuscript Figures - AI Investment Research</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            font-style: italic;
+        }
+        .figure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .figure-card {
+            border: 2px solid #e0e7ff;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fafbff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .figure-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .figure-header {
+            background: #667eea;
+            color: white;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .figure-content {
+            padding: 20px;
+        }
+        .figure-preview {
+            width: 100%;
+            height: 300px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #059669;
+        }
+        .instructions {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .instructions h3 {
+            color: #0369a1;
+            margin-top: 0;
+        }
+        .method {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .method h4 {
+            color: #1e40af;
+            margin-top: 0;
+        }
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .download-all {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .download-all .btn {
+            font-size: 16px;
+            padding: 15px 30px;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Academic Manuscript Figures</h1>
+            <div class="subtitle">AI Investment and Firm Productivity: Publication-Ready Figures</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Publication Figures</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2.4%</div>
+                <div class="stat-label">Productivity Effect</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">547</div>
+                <div class="stat-label">Firms Analyzed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">¥1.15T</div>
+                <div class="stat-label">Max GDP Impact</div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>🎯 How to Convert SVG to PNG for Your Manuscript</h3>
+            
+            <div class="method">
+                <h4>Method 1: Online Converter (Recommended)</h4>
+                <ol>
+                    <li>Click "Download SVG" buttons below to save files</li>
+                    <li>Visit <a href="https://convertio.co/svg-png/" target="_blank">convertio.co/svg-png</a> or <a href="https://cloudconvert.com/svg-to-png" target="_blank">cloudconvert.com</a></li>
+                    <li>Upload your SVG files</li>
+                    <li>Set resolution to <strong>300 DPI</strong> for publication quality</li>
+                    <li>Download the converted PNG files</li>
+                </ol>
+            </div>
+
+            <div class="method">
+                <h4>Method 2: Browser Download</h4>
+                <ol>
+                    <li>Click "View Full Size" to open SVG in browser</li>
+                    <li>Right-click on the figure</li>
+                    <li>Select "Save image as..." → Choose PNG format</li>
+                </ol>
+            </div>
+
+            <div class="method">
+                <h4>Method 3: Command Line (ImageMagick)</h4>
+                <div class="code-block">
+# Install ImageMagick, then run:
+convert -density 300 figure1_main_results.svg figure1_main_results.png
+convert -density 300 figure2_mechanism_decomposition.svg figure2_mechanism_decomposition.png
+# Repeat for all figures...
+                </div>
+            </div>
+        </div>
+
+        <div class="download-all">
+            <a href="#" class="btn btn-success" onclick="downloadAllLinks()">
+                📥 Download All SVG Links
+            </a>
+        </div>
+
+        <div class="figure-grid">
+            <div class="figure-card">
+                <div class="figure-header">
+                    Figure 1: Causal Effect of AI Investment on Total Factor Productivity
+                </div>
+                <div class="figure-content">
+                    <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure1_main_results.svg" 
+                            class="figure-preview" frameborder="0"></iframe>
+                    <div class="button-group">
+                        <a href="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure1_main_results.svg" 
+                           class="btn btn-primary" target="_blank">📥 Download SVG</a>
+                        <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/figure1_main_results.svg" 
+                           class="btn btn-primary" target="_blank">👁️ View Full Size</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <div class="figure-header">
+                    Figure 2: Mechanism Decomposition of AI Productivity Effects
+                </div>
+                <div class="figure-content">
+                    <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure2_mechanism_decomposition.svg" 
+                            class="figure-preview" frameborder="0"></iframe>
+                    <div class="button-group">
+                        <a href="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure2_mechanism_decomposition.svg" 
+                           class="btn btn-primary" target="_blank">📥 Download SVG</a>
+                        <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/figure2_mechanism_decomposition.svg" 
+                           class="btn btn-primary" target="_blank">👁️ View Full Size</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <div class="figure-header">
+                    Figure 3: Evolution of AI Adoption and Productivity Effects Over Time
+                </div>
+                <div class="figure-content">
+                    <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure3_time_series.svg" 
+                            class="figure-preview" frameborder="0"></iframe>
+                    <div class="button-group">
+                        <a href="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure3_time_series.svg" 
+                           class="btn btn-primary" target="_blank">📥 Download SVG</a>
+                        <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/figure3_time_series.svg" 
+                           class="btn btn-primary" target="_blank">👁️ View Full Size</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <div class="figure-header">
+                    Figure 4: Heterogeneity in AI Productivity Effects Across Industries
+                </div>
+                <div class="figure-content">
+                    <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure4_industry_heterogeneity.svg" 
+                            class="figure-preview" frameborder="0"></iframe>
+                    <div class="button-group">
+                        <a href="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure4_industry_heterogeneity.svg" 
+                           class="btn btn-primary" target="_blank">📥 Download SVG</a>
+                        <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/figure4_industry_heterogeneity.svg" 
+                           class="btn btn-primary" target="_blank">👁️ View Full Size</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <div class="figure-header">
+                    Figure 5: Projected Aggregate GDP Impact of AI Adoption Scenarios
+                </div>
+                <div class="figure-content">
+                    <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure5_aggregate_impact.svg" 
+                            class="figure-preview" frameborder="0"></iframe>
+                    <div class="button-group">
+                        <a href="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure5_aggregate_impact.svg" 
+                           class="btn btn-primary" target="_blank">📥 Download SVG</a>
+                        <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/figure5_aggregate_impact.svg" 
+                           class="btn btn-primary" target="_blank">👁️ View Full Size</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="figure-card">
+                <div class="figure-header">
+                    Figure 6: First Stage: CEO Characteristics and AI Investment Propensity
+                </div>
+                <div class="figure-content">
+                    <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure6_first_stage.svg" 
+                            class="figure-preview" frameborder="0"></iframe>
+                    <div class="button-group">
+                        <a href="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure6_first_stage.svg" 
+                           class="btn btn-primary" target="_blank">📥 Download SVG</a>
+                        <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/figure6_first_stage.svg" 
+                           class="btn btn-primary" target="_blank">👁️ View Full Size</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📝 LaTeX Integration</h3>
+            <p>Once you have PNG files, include them in your manuscript:</p>
+            <div class="code-block">
+\\begin{figure}[H]
+    \\centering
+    \\includegraphics[width=0.8\\textwidth]{figures/figure1_main_results.png}
+    \\caption{Causal Effect of AI Investment on Total Factor Productivity}
+    \\label{fig:main_results}
+\\end{figure}
+            </div>
+            <p><strong>Recommended settings:</strong> 300 DPI resolution, 0.8\\textwidth width, PNG format</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
+            <p style="color: #666;">
+                <strong>Repository:</strong> <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO">AI-Investment-CEO</a> | 
+                <strong>Contact:</strong> tatsuru.kikuchi@gmail.com
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function downloadAllLinks() {
+            const figures = [
+                'figure1_main_results.svg',
+                'figure2_mechanism_decomposition.svg', 
+                'figure3_time_series.svg',
+                'figure4_industry_heterogeneity.svg',
+                'figure5_aggregate_impact.svg',
+                'figure6_first_stage.svg'
+            ];
+
+            let content = 'Academic Manuscript Figures - SVG Download Links\\n';
+            content += '==============================================\\n\\n';
+            
+            figures.forEach((fig, index) => {
+                const url = `https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/${fig}`;
+                content += `${index + 1}. ${fig}\\n`;
+                content += `   ${url}\\n\\n`;
+            });
+
+            content += '\\nInstructions:\\n';
+            content += '1. Right-click each URL → "Save link as..." to download\\n';
+            content += '2. Or copy URLs to online SVG→PNG converter\\n';
+            content += '3. Set 300 DPI for publication quality\\n';
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'academic_figures_download_links.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+            alert('📥 Download links file saved! Check your downloads folder.');
+        }
+    </script>
+</body>
+</html>
