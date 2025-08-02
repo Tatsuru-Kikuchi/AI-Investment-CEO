@@ -1,53 +1,125 @@
 # Academic Manuscript Figures
 
-This directory contains publication-quality figures for the academic manuscript:
+## 📊 Publication-Quality Figures for AI Investment Research
+
+This directory contains 6 publication-ready figures for the academic manuscript:
 **"AI Investment and Firm Productivity: Causal Evidence and Mechanism Decomposition from Japanese Enterprise Data"**
 
-## Figure List
+### 🎯 **Quick Access to Figures**
 
-### Figure 1: Main Results
-- **File**: `figure1_main_results.png`
-- **Title**: Causal Effect of AI Investment on Total Factor Productivity
-- **Description**: Comparison of OLS and IV estimates showing the 2.4% causal productivity effect
+| Figure | Description | SVG File | Raw Download |
+|--------|-------------|----------|--------------|
+| **Figure 1** | Causal Effect (Main Results) | [View](figure1_main_results.svg) | [Download](https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure1_main_results.svg) |
+| **Figure 2** | Mechanism Decomposition | [View](figure2_mechanism_decomposition.svg) | [Download](https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure2_mechanism_decomposition.svg) |
+| **Figure 3** | Time Series Evolution | [View](figure3_time_series.svg) | [Download](https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure3_time_series.svg) |
+| **Figure 4** | Industry Heterogeneity | [View](figure4_industry_heterogeneity.svg) | [Download](https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure4_industry_heterogeneity.svg) |
+| **Figure 5** | Aggregate GDP Impact | [View](figure5_aggregate_impact.svg) | [Download](https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure5_aggregate_impact.svg) |
+| **Figure 6** | First Stage Results | [View](figure6_first_stage.svg) | [Download](https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure6_first_stage.svg) |
 
-### Figure 2: Mechanism Decomposition  
-- **File**: `figure2_mechanism_decomposition.png`
-- **Title**: Mechanism Decomposition of AI Productivity Effects
-- **Description**: Pie chart showing Cost Reduction (40%), Revenue Enhancement (35%), Innovation Acceleration (25%)
+### 📥 **Converting SVG to PNG**
 
-### Figure 3: Time Series
-- **File**: `figure3_time_series.png`
-- **Title**: Evolution of AI Adoption and Productivity Effects Over Time
-- **Description**: Time series from 2018-2023 showing AI adoption growth and stable productivity premium
+#### **Method 1: Online Converter (Recommended)**
+1. Visit [convertio.co/svg-png](https://convertio.co/svg-png/) or [cloudconvert.com/svg-to-png](https://cloudconvert.com/svg-to-png)
+2. Click the "Raw Download" links above to save SVG files
+3. Upload SVG files to the converter
+4. Set **300 DPI** for publication quality
+5. Download the PNG files
 
-### Figure 4: Industry Analysis
-- **File**: `figure4_industry_heterogeneity.png` 
-- **Title**: Heterogeneity in AI Productivity Effects Across Industries
-- **Description**: Industry-specific productivity effects (Manufacturing: 3.1%, Services: 2.8%, etc.)
+#### **Method 2: Browser Right-Click**
+1. Click "View" links above to open SVG in browser
+2. Right-click → "Save image as..." → Choose PNG format
+3. Or screenshot for quick preview versions
 
-### Figure 5: Aggregate Impact
-- **File**: `figure5_aggregate_impact.png`
-- **Title**: Projected Aggregate GDP Impact of AI Adoption Scenarios
-- **Description**: GDP impact projections from current (¥172B) to universal adoption (¥1.15T)
+#### **Method 3: Command Line (ImageMagick)**
+```bash
+# Install ImageMagick, then:
+convert -density 300 figure1_main_results.svg figure1_main_results.png
+convert -density 300 figure2_mechanism_decomposition.svg figure2_mechanism_decomposition.png
+# ... repeat for all figures
+```
 
-### Figure 6: First Stage
-- **File**: `figure6_first_stage.png`
-- **Title**: First Stage: CEO Characteristics and AI Investment Propensity  
-- **Description**: Instrumental variable validation showing CEO age, education, and experience effects
+### 📝 **LaTeX Integration**
 
-## Usage
+Once you have PNG files, include them in your manuscript:
 
-These figures are designed for inclusion in:
-- Academic manuscript submissions
-- Conference presentations  
-- Policy briefs
-- Stakeholder reports
+```latex
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/figure1_main_results.png}
+    \caption{Causal Effect of AI Investment on Total Factor Productivity}
+    \label{fig:main_results}
+\end{figure}
+```
 
-All figures follow journal formatting standards with proper titles, notes, and statistical annotations.
+**Recommended LaTeX settings:**
+- **Resolution:** 300 DPI minimum
+- **Width:** `0.8\textwidth` for readability
+- **Placement:** `[H]` for exact positioning
+- **Format:** PNG (recommended) or PDF
 
-## Generation
+### 🎯 **Figure Details**
 
-Figures generated using Chart.js with academic styling, exported as high-resolution PNG files suitable for publication.
+#### **Figure 1: Main Results**
+- Shows 2.4% causal productivity effect
+- Compares OLS vs IV estimates  
+- Error bars with significance levels
 
-**Contact**: tatsuru.kikuchi@gmail.com
-**Repository**: https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO
+#### **Figure 2: Mechanism Decomposition**
+- Cost Reduction: 40% of total effect
+- Revenue Enhancement: 35% of total effect
+- Innovation Acceleration: 25% of total effect
+
+#### **Figure 3: Time Series**
+- AI adoption growth 2018-2023 (8% → 35%)
+- Stable 2.4% productivity premium over time
+
+#### **Figure 4: Industry Analysis**
+- Manufacturing: 3.1% effect
+- Professional Services: 2.8%
+- Retail: 2.3%
+- Finance: 2.1% 
+- Construction: 1.7%
+
+#### **Figure 5: Aggregate Impact**
+- Current (15% adoption): ¥172B GDP impact
+- Universal (90% adoption): ¥1.15T GDP impact
+
+#### **Figure 6: First Stage**
+- CEO age: -1.5% effect on AI investment
+- Technical education: +22.3% effect
+- Technology experience: +16.2% effect
+- F-statistic: 24.7 (strong instruments)
+
+### 📊 **Technical Specifications**
+
+- **Format:** Scalable Vector Graphics (SVG)
+- **Font:** Times New Roman (academic standard)
+- **Size:** Optimized for journal submission
+- **Quality:** Publication-ready with proper annotations
+- **Style:** Professional academic formatting
+
+### 🔗 **Repository Links**
+
+- **Main Repository:** https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO
+- **Live Dashboards:** https://tatsuru-kikuchi.github.io/AI-Investment-CEO/
+- **Contact:** tatsuru.kikuchi@gmail.com
+
+### 📋 **Usage Notes**
+
+All figures follow academic journal standards:
+- Clear titles and axis labels
+- Statistical significance indicators
+- Comprehensive notes sections
+- Error bars and confidence intervals
+- Professional color schemes
+
+Perfect for submission to:
+- American Economic Review (AER)
+- Management Science
+- Journal of Political Economy
+- Review of Economic Studies
+- Other top-tier economics/management journals
+
+---
+
+**Generated:** August 2025 | **Version:** 1.0 | **Status:** Publication Ready
