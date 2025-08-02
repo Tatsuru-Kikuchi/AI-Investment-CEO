@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG to PNG Converter - Academic Figures</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .figure-preview {
+            margin: 30px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .figure-header {
+            background: #f8f9fa;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+        .figure-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .convert-btn {
+            background: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        .convert-btn:hover {
+            background: #1d4ed8;
+        }
+        .download-all {
+            background: #10b981;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: background 0.3s;
+        }
+        .download-all:hover {
+            background: #059669;
+        }
+        .instructions {
+            background: #e0f2fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #0277bd;
+        }
+        .status {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #333;">
+            📊 Academic Manuscript Figure Converter
+        </h1>
+        
+        <div class="instructions">
+            <h3>🎯 Instructions for Converting SVG to PNG</h3>
+            <p><strong>Option 1 - Online Conversion (Recommended):</strong></p>
+            <ol>
+                <li>Visit any SVG to PNG converter (e.g., <a href="https://convertio.co/svg-png/" target="_blank">convertio.co</a> or <a href="https://cloudconvert.com/svg-to-png" target="_blank">cloudconvert.com</a>)</li>
+                <li>Upload the SVG files from your repository</li>
+                <li>Set resolution to <strong>300 DPI</strong> for publication quality</li>
+                <li>Download the converted PNG files</li>
+            </ol>
+            
+            <p><strong>Option 2 - Browser Method:</strong></p>
+            <ol>
+                <li>Open each SVG file in a new browser tab (click the links below)</li>
+                <li>Right-click → "Save as..." → Choose PNG format</li>
+                <li>Or use browser developer tools to convert programmatically</li>
+            </ol>
+            
+            <p><strong>Option 3 - Command Line (if you have ImageMagick):</strong></p>
+            <code>convert -density 300 figure1_main_results.svg figure1_main_results.png</code>
+        </div>
+
+        <div style="text-align: center;">
+            <button class="download-all" onclick="downloadAllLinks()">
+                📥 Get All SVG Download Links
+            </button>
+        </div>
+
+        <div id="status"></div>
+
+        <!-- Figure 1 -->
+        <div class="figure-preview">
+            <div class="figure-header">
+                Figure 1: Causal Effect of AI Investment on Total Factor Productivity
+            </div>
+            <div class="figure-content">
+                <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure1_main_results.svg"></iframe>
+                <br>
+                <button class="convert-btn" onclick="openSVG('figure1_main_results.svg')">📥 Download SVG</button>
+                <button class="convert-btn" onclick="viewFigure('figure1_main_results.svg')">👁️ View Full Size</button>
+            </div>
+        </div>
+
+        <!-- Figure 2 -->
+        <div class="figure-preview">
+            <div class="figure-header">
+                Figure 2: Mechanism Decomposition of AI Productivity Effects
+            </div>
+            <div class="figure-content">
+                <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure2_mechanism_decomposition.svg"></iframe>
+                <br>
+                <button class="convert-btn" onclick="openSVG('figure2_mechanism_decomposition.svg')">📥 Download SVG</button>
+                <button class="convert-btn" onclick="viewFigure('figure2_mechanism_decomposition.svg')">👁️ View Full Size</button>
+            </div>
+        </div>
+
+        <!-- Figure 3 -->
+        <div class="figure-preview">
+            <div class="figure-header">
+                Figure 3: Evolution of AI Adoption and Productivity Effects Over Time
+            </div>
+            <div class="figure-content">
+                <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure3_time_series.svg"></iframe>
+                <br>
+                <button class="convert-btn" onclick="openSVG('figure3_time_series.svg')">📥 Download SVG</button>
+                <button class="convert-btn" onclick="viewFigure('figure3_time_series.svg')">👁️ View Full Size</button>
+            </div>
+        </div>
+
+        <!-- Figure 4 -->
+        <div class="figure-preview">
+            <div class="figure-header">
+                Figure 4: Heterogeneity in AI Productivity Effects Across Industries
+            </div>
+            <div class="figure-content">
+                <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure4_industry_heterogeneity.svg"></iframe>
+                <br>
+                <button class="convert-btn" onclick="openSVG('figure4_industry_heterogeneity.svg')">📥 Download SVG</button>
+                <button class="convert-btn" onclick="viewFigure('figure4_industry_heterogeneity.svg')">👁️ View Full Size</button>
+            </div>
+        </div>
+
+        <!-- Figure 5 -->
+        <div class="figure-preview">
+            <div class="figure-header">
+                Figure 5: Projected Aggregate GDP Impact of AI Adoption Scenarios
+            </div>
+            <div class="figure-content">
+                <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure5_aggregate_impact.svg"></iframe>
+                <br>
+                <button class="convert-btn" onclick="openSVG('figure5_aggregate_impact.svg')">📥 Download SVG</button>
+                <button class="convert-btn" onclick="viewFigure('figure5_aggregate_impact.svg')">👁️ View Full Size</button>
+            </div>
+        </div>
+
+        <!-- Figure 6 -->
+        <div class="figure-preview">
+            <div class="figure-header">
+                Figure 6: First Stage: CEO Characteristics and AI Investment Propensity
+            </div>
+            <div class="figure-content">
+                <iframe src="https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/figure6_first_stage.svg"></iframe>
+                <br>
+                <button class="convert-btn" onclick="openSVG('figure6_first_stage.svg')">📥 Download SVG</button>
+                <button class="convert-btn" onclick="viewFigure('figure6_first_stage.svg')">👁️ View Full Size</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 Figure Usage in LaTeX</h3>
+            <p>Once you have the PNG files, include them in your LaTeX manuscript with:</p>
+            <pre style="background: #f8f9fa; padding: 15px; border-radius: 4px; overflow-x: auto;">
+\\begin{figure}[H]
+    \\centering
+    \\includegraphics[width=0.8\\textwidth]{figures/figure1_main_results.png}
+    \\caption{Causal Effect of AI Investment on Total Factor Productivity}
+    \\label{fig:main_results}
+\\end{figure}</pre>
+            
+            <p><strong>For all figures, recommended settings:</strong></p>
+            <ul>
+                <li><strong>Resolution:</strong> 300 DPI minimum for publication</li>
+                <li><strong>Format:</strong> PNG or PDF (PNG recommended for complexity)</li>
+                <li><strong>Width:</strong> 0.8\\textwidth in LaTeX for good readability</li>
+                <li><strong>Placement:</strong> [H] for exact positioning or [htbp] for flexible</li>
+            </ul>
+        </div>
+
+        <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #0369a1;">🎯 Repository Links</h3>
+            <p><strong>Figures Directory:</strong> <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/tree/main/figures" target="_blank">https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/tree/main/figures</a></p>
+            <p><strong>Main Repository:</strong> <a href="https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO" target="_blank">https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO</a></p>
+            <p><strong>Contact:</strong> tatsuru.kikuchi@gmail.com</p>
+        </div>
+    </div>
+
+    <script>
+        function openSVG(filename) {
+            const url = `https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/${filename}`;
+            window.open(url, '_blank');
+            showStatus(`Opening ${filename}...`, 'success');
+        }
+
+        function viewFigure(filename) {
+            const url = `https://github.com/Tatsuru-Kikuchi/AI-Investment-CEO/blob/main/figures/${filename}`;
+            window.open(url, '_blank');
+        }
+
+        function downloadAllLinks() {
+            const figures = [
+                'figure1_main_results.svg',
+                'figure2_mechanism_decomposition.svg', 
+                'figure3_time_series.svg',
+                'figure4_industry_heterogeneity.svg',
+                'figure5_aggregate_impact.svg',
+                'figure6_first_stage.svg'
+            ];
+
+            let message = 'All SVG Download Links:\\n\\n';
+            figures.forEach((fig, index) => {
+                const url = `https://raw.githubusercontent.com/Tatsuru-Kikuchi/AI-Investment-CEO/main/figures/${fig}`;
+                message += `${index + 1}. ${fig}:\\n${url}\\n\\n`;
+            });
+
+            // Create a text file with all links
+            const blob = new Blob([message], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'svg_download_links.txt';
+            a.click();
+            window.URL.revokeObjectURL(url);
+
+            showStatus('Download links file created! Check your downloads folder.', 'success');
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+            setTimeout(() => {
+                statusDiv.innerHTML = '';
+            }, 3000);
+        }
+
+        // Auto-load status on page load
+        window.onload = function() {
+            showStatus('✅ All 6 academic figures ready for conversion to PNG format!', 'success');
+        };
+    </script>
+</body>
+</html>
