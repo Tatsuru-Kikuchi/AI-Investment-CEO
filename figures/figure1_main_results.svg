@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Figure 1: Main Results</title>
+    <style>
+        .figure { font-family: 'Times New Roman', serif; }
+        .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
+        .axis-label { font-size: 12px; text-anchor: middle; }
+        .tick-label { font-size: 10px; text-anchor: middle; }
+        .bar { stroke: #000; stroke-width: 1; }
+        .notes { font-size: 10px; }
+    </style>
+</head>
+<body>
+    <svg width="600" height="500" class="figure">
+        <!-- Title -->
+        <text x="300" y="30" class="title">Figure 1: Causal Effect of AI Investment on Total Factor Productivity</text>
+        
+        <!-- Bars -->
+        <rect x="80" y="300" width="80" height="80" fill="#94a3b8" class="bar"/>
+        <rect x="180" y="250" width="80" height="130" fill="#3b82f6" class="bar"/>
+        <rect x="280" y="270" width="80" height="110" fill="#1d4ed8" class="bar"/>
+        <rect x="380" y="250" width="80" height="130" fill="#1e40af" class="bar"/>
+        
+        <!-- Error bars -->
+        <line x1="120" y1="290" x2="120" y2="310" stroke="#000" stroke-width="2"/>
+        <line x1="220" y1="240" x2="220" y2="260" stroke="#000" stroke-width="2"/>
+        <line x1="320" y1="260" x2="320" y2="280" stroke="#000" stroke-width="2"/>
+        <line x1="420" y1="240" x2="420" y2="260" stroke="#000" stroke-width="2"/>
+        
+        <!-- Y-axis -->
+        <line x1="50" y1="400" x2="50" y2="150" stroke="#000" stroke-width="1"/>
+        <text x="25" y="280" class="axis-label" transform="rotate(-90, 25, 280)">Productivity Effect (%)</text>
+        
+        <!-- Y-axis ticks -->
+        <line x1="45" y1="400" x2="55" y2="400" stroke="#000"/>
+        <text x="40" y="405" class="tick-label" text-anchor="end">0</text>
+        <line x1="45" y1="350" x2="55" y2="350" stroke="#000"/>
+        <text x="40" y="355" class="tick-label" text-anchor="end">1</text>
+        <line x1="45" y1="300" x2="55" y2="300" stroke="#000"/>
+        <text x="40" y="305" class="tick-label" text-anchor="end">2</text>
+        <line x1="45" y1="250" x2="55" y2="250" stroke="#000"/>
+        <text x="40" y="255" class="tick-label" text-anchor="end">3</text>
+        
+        <!-- X-axis -->
+        <line x1="50" y1="400" x2="500" y2="400" stroke="#000" stroke-width="1"/>
+        <text x="275" y="440" class="axis-label">Estimation Method</text>
+        
+        <!-- X-axis labels -->
+        <text x="120" y="420" class="tick-label">OLS</text>
+        <text x="220" y="420" class="tick-label">IV (Age)</text>
+        <text x="320" y="420" class="tick-label">IV (Age+Tech)</text>
+        <text x="420" y="420" class="tick-label">IV (Full)</text>
+        
+        <!-- Value labels -->
+        <text x="120" y="290" class="tick-label">1.6%</text>
+        <text x="220" y="240" class="tick-label">2.4%***</text>
+        <text x="320" y="260" class="tick-label">2.2%**</text>
+        <text x="420" y="240" class="tick-label">2.4%***</text>
+        
+        <!-- Notes -->
+        <text x="50" y="480" class="notes">Notes: Standard errors clustered at firm level. *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1. Sample: 547 firms, 2018-2023.</text>
+    </svg>
+</body>
+</html>
