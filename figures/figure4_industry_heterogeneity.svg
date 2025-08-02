@@ -1,73 +1,85 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Figure 4: Industry Heterogeneity</title>
+<svg width="700" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
     <style>
-        .figure { font-family: 'Times New Roman', serif; }
-        .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
-        .axis-label { font-size: 12px; text-anchor: middle; }
-        .tick-label { font-size: 10px; text-anchor: middle; }
-        .bar { stroke: #000; stroke-width: 1; }
-        .notes { font-size: 10px; }
+      .figure { font-family: 'Times New Roman', serif; }
+      .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .axis-label { font-size: 12px; text-anchor: middle; }
+      .tick-label { font-size: 10px; text-anchor: middle; }
+      .bar { stroke: #000; stroke-width: 1; }
+      .notes { font-size: 10px; }
     </style>
-</head>
-<body>
-    <svg width="700" height="500" class="figure">
-        <!-- Title -->
-        <text x="350" y="30" class="title">Figure 4: Heterogeneity in AI Productivity Effects Across Industries</text>
-        
-        <!-- Bars -->
-        <rect x="80" y="220" width="90" height="155" fill="#3b82f6" class="bar"/>
-        <rect x="190" y="240" width="90" height="135" fill="#10b981" class="bar"/>
-        <rect x="300" y="260" width="90" height="115" fill="#f59e0b" class="bar"/>
-        <rect x="410" y="270" width="90" height="105" fill="#ef4444" class="bar"/>
-        <rect x="520" y="290" width="90" height="85" fill="#8b5cf6" class="bar"/>
-        
-        <!-- Error bars -->
-        <line x1="125" y1="210" x2="125" y2="230" stroke="#000" stroke-width="2"/>
-        <line x1="235" y1="230" x2="235" y2="250" stroke="#000" stroke-width="2"/>
-        <line x1="345" y1="250" x2="345" y2="270" stroke="#000" stroke-width="2"/>
-        <line x1="455" y1="260" x2="455" y2="280" stroke="#000" stroke-width="2"/>
-        <line x1="565" y1="280" x2="565" y2="300" stroke="#000" stroke-width="2"/>
-        
-        <!-- Y-axis -->
-        <line x1="50" y1="400" x2="50" y2="150" stroke="#000" stroke-width="1"/>
-        <text x="25" y="280" class="axis-label" transform="rotate(-90, 25, 280)">Productivity Effect (%)</text>
-        
-        <!-- Y-axis ticks -->
-        <line x1="45" y1="400" x2="55" y2="400" stroke="#000"/>
-        <text x="40" y="405" class="tick-label" text-anchor="end">0</text>
-        <line x1="45" y1="350" x2="55" y2="350" stroke="#000"/>
-        <text x="40" y="355" class="tick-label" text-anchor="end">1</text>
-        <line x1="45" y1="300" x2="55" y2="300" stroke="#000"/>
-        <text x="40" y="305" class="tick-label" text-anchor="end">2</text>
-        <line x1="45" y1="250" x2="55" y2="250" stroke="#000"/>
-        <text x="40" y="255" class="tick-label" text-anchor="end">3</text>
-        <line x1="45" y1="200" x2="55" y2="200" stroke="#000"/>
-        <text x="40" y="205" class="tick-label" text-anchor="end">4</text>
-        
-        <!-- X-axis -->
-        <line x1="50" y1="400" x2="650" y2="400" stroke="#000" stroke-width="1"/>
-        <text x="350" y="440" class="axis-label">Industry</text>
-        
-        <!-- X-axis labels -->
-        <text x="125" y="420" class="tick-label">Manufacturing</text>
-        <text x="235" y="420" class="tick-label">Professional</text>
-        <text x="235" y="435" class="tick-label">Services</text>
-        <text x="345" y="420" class="tick-label">Retail</text>
-        <text x="455" y="420" class="tick-label">Finance</text>
-        <text x="565" y="420" class="tick-label">Construction</text>
-        
-        <!-- Value labels -->
-        <text x="125" y="210" class="tick-label">3.1%***</text>
-        <text x="235" y="230" class="tick-label">2.8%***</text>
-        <text x="345" y="250" class="tick-label">2.3%**</text>
-        <text x="455" y="260" class="tick-label">2.1%**</text>
-        <text x="565" y="280" class="tick-label">1.7%*</text>
-        
-        <!-- Notes -->
-        <text x="50" y="470" class="notes">Notes: Industry-specific IV estimates of AI productivity effects. Error bars show 95% confidence intervals.</text>
-        <text x="50" y="485" class="notes">*** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1. Manufacturing benefits from automation, services from decision support. N=547 firms.</text>
-    </svg>
-</body>
-</html>
+  </defs>
+  
+  <!-- White background -->
+  <rect width="700" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="350" y="30" class="title">Figure 4: Heterogeneity in AI Productivity Effects Across Industries</text>
+  
+  <!-- Bars -->
+  <rect x="80" y="220" width="90" height="155" fill="#3b82f6" class="bar"/>
+  <rect x="190" y="240" width="90" height="135" fill="#10b981" class="bar"/>
+  <rect x="300" y="260" width="90" height="115" fill="#f59e0b" class="bar"/>
+  <rect x="410" y="270" width="90" height="105" fill="#ef4444" class="bar"/>
+  <rect x="520" y="290" width="90" height="85" fill="#8b5cf6" class="bar"/>
+  
+  <!-- Error bars -->
+  <line x1="125" y1="210" x2="125" y2="230" stroke="#000" stroke-width="2"/>
+  <line x1="120" y1="210" x2="130" y2="210" stroke="#000" stroke-width="1"/>
+  <line x1="120" y1="230" x2="130" y2="230" stroke="#000" stroke-width="1"/>
+  
+  <line x1="235" y1="230" x2="235" y2="250" stroke="#000" stroke-width="2"/>
+  <line x1="230" y1="230" x2="240" y2="230" stroke="#000" stroke-width="1"/>
+  <line x1="230" y1="250" x2="240" y2="250" stroke="#000" stroke-width="1"/>
+  
+  <line x1="345" y1="250" x2="345" y2="270" stroke="#000" stroke-width="2"/>
+  <line x1="340" y1="250" x2="350" y2="250" stroke="#000" stroke-width="1"/>
+  <line x1="340" y1="270" x2="350" y2="270" stroke="#000" stroke-width="1"/>
+  
+  <line x1="455" y1="260" x2="455" y2="280" stroke="#000" stroke-width="2"/>
+  <line x1="450" y1="260" x2="460" y2="260" stroke="#000" stroke-width="1"/>
+  <line x1="450" y1="280" x2="460" y2="280" stroke="#000" stroke-width="1"/>
+  
+  <line x1="565" y1="280" x2="565" y2="300" stroke="#000" stroke-width="2"/>
+  <line x1="560" y1="280" x2="570" y2="280" stroke="#000" stroke-width="1"/>
+  <line x1="560" y1="300" x2="570" y2="300" stroke="#000" stroke-width="1"/>
+  
+  <!-- Y-axis -->
+  <line x1="50" y1="400" x2="50" y2="150" stroke="#000" stroke-width="1"/>
+  <text x="25" y="280" class="axis-label" transform="rotate(-90, 25, 280)">Productivity Effect (%)</text>
+  
+  <!-- Y-axis ticks -->
+  <line x1="45" y1="400" x2="55" y2="400" stroke="#000"/>
+  <text x="40" y="405" class="tick-label" text-anchor="end">0</text>
+  <line x1="45" y1="350" x2="55" y2="350" stroke="#000"/>
+  <text x="40" y="355" class="tick-label" text-anchor="end">1</text>
+  <line x1="45" y1="300" x2="55" y2="300" stroke="#000"/>
+  <text x="40" y="305" class="tick-label" text-anchor="end">2</text>
+  <line x1="45" y1="250" x2="55" y2="250" stroke="#000"/>
+  <text x="40" y="255" class="tick-label" text-anchor="end">3</text>
+  <line x1="45" y1="200" x2="55" y2="200" stroke="#000"/>
+  <text x="40" y="205" class="tick-label" text-anchor="end">4</text>
+  
+  <!-- X-axis -->
+  <line x1="50" y1="400" x2="650" y2="400" stroke="#000" stroke-width="1"/>
+  <text x="350" y="440" class="axis-label">Industry</text>
+  
+  <!-- X-axis labels -->
+  <text x="125" y="420" class="tick-label">Manufacturing</text>
+  <text x="235" y="420" class="tick-label">Professional</text>
+  <text x="235" y="435" class="tick-label">Services</text>
+  <text x="345" y="420" class="tick-label">Retail</text>
+  <text x="455" y="420" class="tick-label">Finance</text>
+  <text x="565" y="420" class="tick-label">Construction</text>
+  
+  <!-- Value labels -->
+  <text x="125" y="210" class="tick-label">3.1%***</text>
+  <text x="235" y="230" class="tick-label">2.8%***</text>
+  <text x="345" y="250" class="tick-label">2.3%**</text>
+  <text x="455" y="260" class="tick-label">2.1%**</text>
+  <text x="565" y="280" class="tick-label">1.7%*</text>
+  
+  <!-- Notes -->
+  <text x="50" y="470" class="notes">Notes: Industry-specific IV estimates of AI productivity effects. Error bars show 95% confidence intervals.</text>
+  <text x="50" y="485" class="notes">*** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1. Manufacturing benefits from automation, services from decision support. N=547 firms.</text>
+</svg>

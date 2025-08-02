@@ -1,52 +1,50 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Figure 2: Mechanism Decomposition</title>
+<svg width="600" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
     <style>
-        .figure { font-family: 'Times New Roman', serif; }
-        .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
-        .legend { font-size: 11px; }
-        .notes { font-size: 10px; }
+      .figure { font-family: 'Times New Roman', serif; }
+      .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
+      .legend { font-size: 11px; }
+      .notes { font-size: 10px; }
     </style>
-</head>
-<body>
-    <svg width="600" height="500" class="figure">
-        <!-- Title -->
-        <text x="300" y="30" class="title">Figure 2: Mechanism Decomposition of AI Productivity Effects</text>
-        
-        <!-- Pie chart -->
-        <g transform="translate(300,250)">
-            <!-- Cost Reduction: 40% (144 degrees) -->
-            <path d="M 0,-100 A 100,100 0 0,1 95.11,-30.9 L 0,0 Z" fill="#ef4444" stroke="#000" stroke-width="2"/>
-            
-            <!-- Revenue Enhancement: 35% (126 degrees) -->  
-            <path d="M 95.11,-30.9 A 100,100 0 0,1 -22.25,97.49 L 0,0 Z" fill="#3b82f6" stroke="#000" stroke-width="2"/>
-            
-            <!-- Innovation Acceleration: 25% (90 degrees) -->
-            <path d="M -22.25,97.49 A 100,100 0 0,1 0,-100 L 0,0 Z" fill="#10b981" stroke="#000" stroke-width="2"/>
-            
-            <!-- Labels -->
-            <text x="50" y="-50" class="legend" text-anchor="middle">40%</text>
-            <text x="40" y="40" class="legend" text-anchor="middle">35%</text>
-            <text x="-40" y="20" class="legend" text-anchor="middle">25%</text>
-        </g>
-        
-        <!-- Legend -->
-        <g transform="translate(50,350)">
-            <rect x="0" y="0" width="15" height="15" fill="#ef4444"/>
-            <text x="25" y="12" class="legend">Cost Reduction (40%)</text>
-            
-            <rect x="200" y="0" width="15" height="15" fill="#3b82f6"/>
-            <text x="225" y="12" class="legend">Revenue Enhancement (35%)</text>
-            
-            <rect x="0" y="25" width="15" height="15" fill="#10b981"/>
-            <text x="25" y="37" class="legend">Innovation Acceleration (25%)</text>
-        </g>
-        
-        <!-- Notes -->
-        <text x="50" y="420" class="notes">Notes: Decomposition based on causal mediation analysis. Total effect = 2.4% productivity gain.</text>
-        <text x="50" y="435" class="notes">Cost channel captures operational efficiency. Revenue channel includes customer targeting and pricing.</text>
-        <text x="50" y="450" class="notes">Innovation channel measures R&amp;D productivity and new product development. N=547 firms.</text>
-    </svg>
-</body>
-</html>
+  </defs>
+  
+  <!-- White background -->
+  <rect width="600" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" class="title">Figure 2: Mechanism Decomposition of AI Productivity Effects</text>
+  
+  <!-- Pie chart -->
+  <g transform="translate(300,220)">
+    <!-- Cost Reduction: 40% (144 degrees) -->
+    <path d="M 0,-100 A 100,100 0 0,1 95.11,-30.9 L 0,0 Z" fill="#ef4444" stroke="#000" stroke-width="2"/>
+    
+    <!-- Revenue Enhancement: 35% (126 degrees) -->  
+    <path d="M 95.11,-30.9 A 100,100 0 0,1 -22.25,97.49 L 0,0 Z" fill="#3b82f6" stroke="#000" stroke-width="2"/>
+    
+    <!-- Innovation Acceleration: 25% (90 degrees) -->
+    <path d="M -22.25,97.49 A 100,100 0 0,1 0,-100 L 0,0 Z" fill="#10b981" stroke="#000" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="50" y="-50" class="legend" text-anchor="middle" fill="white" font-weight="bold">40%</text>
+    <text x="40" y="40" class="legend" text-anchor="middle" fill="white" font-weight="bold">35%</text>
+    <text x="-40" y="20" class="legend" text-anchor="middle" fill="white" font-weight="bold">25%</text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50,350)">
+    <rect x="0" y="0" width="15" height="15" fill="#ef4444"/>
+    <text x="25" y="12" class="legend">Cost Reduction (40%)</text>
+    
+    <rect x="200" y="0" width="15" height="15" fill="#3b82f6"/>
+    <text x="225" y="12" class="legend">Revenue Enhancement (35%)</text>
+    
+    <rect x="0" y="25" width="15" height="15" fill="#10b981"/>
+    <text x="25" y="37" class="legend">Innovation Acceleration (25%)</text>
+  </g>
+  
+  <!-- Notes -->
+  <text x="50" y="410" class="notes">Notes: Decomposition based on causal mediation analysis. Total effect = 2.4% productivity gain.</text>
+  <text x="50" y="425" class="notes">Cost channel captures operational efficiency. Revenue channel includes customer targeting and pricing.</text>
+  <text x="50" y="440" class="notes">Innovation channel measures R&amp;D productivity and new product development. N=547 firms.</text>
+</svg>
