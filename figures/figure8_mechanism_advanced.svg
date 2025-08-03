@@ -1,0 +1,60 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .figure { font-family: 'Times New Roman', serif; }
+      .legend { font-size: 12px; }
+      .notes { font-size: 11px; }
+      .value-label { font-size: 14px; font-weight: bold; text-anchor: middle; }
+    </style>
+  </defs>
+  
+  <!-- White background -->
+  <rect width="800" height="600" fill="white"/>
+  
+  <!-- Pie chart center -->
+  <g transform="translate(400,250)">
+    <!-- Cost Reduction: 40.2% (144.72 degrees) -->
+    <path d="M 0,-120 A 120,120 0 0,1 114.13,-37.08 L 0,0 Z" fill="#3498DB" stroke="#2E86C1" stroke-width="3"/>
+    
+    <!-- Revenue Enhancement: 35.1% (126.36 degrees) -->  
+    <path d="M 114.13,-37.08 A 120,120 0 0,1 -26.7,116.99 L 0,0 Z" fill="#E74C3C" stroke="#C0392B" stroke-width="3"/>
+    
+    <!-- Innovation Acceleration: 24.7% (88.92 degrees) -->
+    <path d="M -26.7,116.99 A 120,120 0 0,1 0,-120 L 0,0 Z" fill="#2ECC71" stroke="#27AE60" stroke-width="3"/>
+    
+    <!-- Percentage labels -->
+    <text x="60" y="-60" class="value-label" fill="white">40.2%</text>
+    <text x="48" y="48" class="value-label" fill="white">35.1%</text>
+    <text x="-48" y="24" class="value-label" fill="white">24.7%</text>
+  </g>
+  
+  <!-- Legend with effect sizes -->
+  <g transform="translate(120,420)">
+    <rect x="0" y="0" width="20" height="15" fill="#3498DB" stroke="#2E86C1" stroke-width="2"/>
+    <text x="30" y="12" class="legend">Cost Reduction (40.2%) - 0.965pp effect</text>
+    
+    <rect x="0" y="25" width="20" height="15" fill="#E74C3C" stroke="#C0392B" stroke-width="2"/>
+    <text x="30" y="37" class="legend">Revenue Enhancement (35.1%) - 0.842pp effect</text>
+    
+    <rect x="0" y="50" width="20" height="15" fill="#2ECC71" stroke="#27AE60" stroke-width="2"/>
+    <text x="30" y="62" class="legend">Innovation Acceleration (24.7%) - 0.593pp effect</text>
+  </g>
+  
+  <!-- Central text -->
+  <text x="400" y="250" class="value-label" text-anchor="middle" font-size="16">Total Effect</text>
+  <text x="400" y="270" class="value-label" text-anchor="middle" font-size="18" fill="#2E86C1">2.4%</text>
+  
+  <!-- Statistical info box -->
+  <g transform="translate(500,420)">
+    <rect x="0" y="0" width="280" height="80" fill="#f1f3f4" stroke="#ddd" stroke-width="1" rx="5"/>
+    <text x="10" y="18" class="notes" font-weight="bold">Statistical Significance:</text>
+    <text x="10" y="33" class="notes">All mechanisms significant at p &lt; 0.01 level</text>
+    <text x="10" y="48" class="notes" font-weight="bold">Sample Size:</text>
+    <text x="10" y="63" class="notes">542 firms, 6,504 firm-quarter observations</text>
+  </g>
+  
+  <!-- Notes -->
+  <text x="80" y="540" class="notes">Notes: Mechanism decomposition using causal mediation analysis with bootstrap confidence intervals.</text>
+  <text x="80" y="555" class="notes">Cost reduction includes operational efficiency and automation gains. Revenue enhancement captures customer</text>
+  <text x="80" y="570" class="notes">targeting and pricing optimization. Innovation acceleration reflects R&amp;D productivity improvements.</text>
+</svg>

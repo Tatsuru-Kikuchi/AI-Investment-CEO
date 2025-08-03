@@ -1,0 +1,81 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .figure { font-family: 'Times New Roman', serif; }
+      .axis-label { font-size: 14px; text-anchor: middle; font-weight: bold; }
+      .tick-label { font-size: 12px; text-anchor: middle; }
+      .value-label { font-size: 12px; text-anchor: middle; font-weight: bold; }
+      .notes { font-size: 11px; }
+      .bar { stroke: #000; stroke-width: 2; }
+    </style>
+  </defs>
+  
+  <!-- White background -->
+  <rect width="800" height="600" fill="white"/>
+  
+  <!-- Y-axis -->
+  <line x1="80" y1="450" x2="80" y2="100" stroke="#000" stroke-width="1"/>
+  <text x="30" y="275" class="axis-label" transform="rotate(-90, 30, 275)">Quarterly Productivity Growth Effect (%)</text>
+  
+  <!-- Y-axis ticks -->
+  <line x1="75" y1="450" x2="85" y2="450" stroke="#000"/>
+  <text x="70" y="455" class="tick-label" text-anchor="end">0</text>
+  <line x1="75" y1="380" x2="85" y2="380" stroke="#000"/>
+  <text x="70" y="385" class="tick-label" text-anchor="end">1</text>
+  <line x1="75" y1="310" x2="85" y2="310" stroke="#000"/>
+  <text x="70" y="315" class="tick-label" text-anchor="end">2</text>
+  <line x1="75" y1="240" x2="85" y2="240" stroke="#000"/>
+  <text x="70" y="245" class="tick-label" text-anchor="end">3</text>
+  <line x1="75" y1="170" x2="85" y2="170" stroke="#000"/>
+  <text x="70" y="175" class="tick-label" text-anchor="end">4</text>
+  <line x1="75" y1="100" x2="85" y2="100" stroke="#000"/>
+  <text x="70" y="105" class="tick-label" text-anchor="end">5</text>
+  
+  <!-- X-axis -->
+  <line x1="80" y1="450" x2="720" y2="450" stroke="#000" stroke-width="1"/>
+  <text x="400" y="520" class="axis-label">Firm Size Category</text>
+  
+  <!-- Grid lines -->
+  <line x1="80" y1="380" x2="720" y2="380" stroke="#E5E5E5" stroke-width="1"/>
+  <line x1="80" y1="310" x2="720" y2="310" stroke="#E5E5E5" stroke-width="1"/>
+  <line x1="80" y1="240" x2="720" y2="240" stroke="#E5E5E5" stroke-width="1"/>
+  <line x1="80" y1="170" x2="720" y2="170" stroke="#E5E5E5" stroke-width="1"/>
+  
+  <!-- Bars -->
+  <rect x="130" y="394" width="100" height="56" fill="#3498DB" class="bar"/>
+  <rect x="280" y="345" width="100" height="105" fill="#9B59B6" class="bar"/>
+  <rect x="430" y="289" width="100" height="161" fill="#E67E22" class="bar"/>
+  <rect x="580" y="156" width="100" height="294" fill="#E74C3C" class="bar"/>
+  
+  <!-- Value labels on bars -->
+  <text x="180" y="385" class="value-label" fill="#000">0.8%***</text>
+  <text x="330" y="335" class="value-label" fill="#000">1.5%**</text>
+  <text x="480" y="280" class="value-label" fill="#000">2.3%***</text>
+  <text x="630" y="145" class="value-label" fill="#000">4.2%***</text>
+  
+  <!-- X-axis labels -->
+  <text x="180" y="470" class="tick-label">Micro</text>
+  <text x="180" y="485" class="tick-label">(1-10 employees)</text>
+  <text x="330" y="470" class="tick-label">Small</text>
+  <text x="330" y="485" class="tick-label">(11-50 employees)</text>
+  <text x="480" y="470" class="tick-label">Medium</text>
+  <text x="480" y="485" class="tick-label">(51-250 employees)</text>
+  <text x="630" y="470" class="tick-label">Large</text>
+  <text x="630" y="485" class="tick-label">(250+ employees)</text>
+  
+  <!-- Statistical table -->
+  <g transform="translate(100,50)">
+    <rect x="0" y="0" width="600" height="30" fill="#f1f3f4" stroke="#000" stroke-width="1"/>
+    <text x="10" y="20" class="tick-label" font-weight="bold">Size</text>
+    <text x="80" y="20" class="tick-label" font-weight="bold">Employees</text>
+    <text x="180" y="20" class="tick-label" font-weight="bold">Effect (%)</text>
+    <text x="280" y="20" class="tick-label" font-weight="bold">Std Error</text>
+    <text x="380" y="20" class="tick-label" font-weight="bold">Observations</text>
+    <text x="500" y="20" class="tick-label" font-weight="bold">Relative to Baseline</text>
+  </g>
+  
+  <!-- Notes -->
+  <text x="80" y="550" class="notes">Notes: *** p&lt;0.01, ** p&lt;0.05, * p&lt;0.1. Standard errors clustered at firm level. Baseline effect is overall sample average (2.4%).</text>
+  <text x="80" y="565" class="notes">Large firms achieve 5.25× higher productivity gains than micro firms. Effect increases monotonically with firm size,</text>
+  <text x="80" y="580" class="notes">suggesting scale economies in AI implementation and complementary organizational capabilities.</text>
+</svg>
