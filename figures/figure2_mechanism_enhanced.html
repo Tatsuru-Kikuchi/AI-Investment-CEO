@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure 2: Mechanism Decomposition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+        }
+        .figure-container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .download-btn {
+            background: #E74C3C;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', serif;
+            font-size: 14px;
+        }
+        .download-btn:hover {
+            background: #C0392B;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+        .stats-box {
+            margin-top: 15px;
+            padding: 10px;
+            background: #f1f3f4;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .mechanism-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .mechanism-item {
+            text-align: center;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .mechanism-value {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        .mechanism-label {
+            font-size: 11px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="figure-container">
+        <div class="chart-container">
+            <canvas id="mechanismChart"></canvas>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <button class="download-btn" onclick="downloadChart()">📥 Download PNG</button>
+            <button class="download-btn" onclick="window.print()">🖨️ Print</button>
+        </div>
+        
+        <div class="mechanism-grid">
+            <div class="mechanism-item">
+                <div class="mechanism-value" style="color: #3498DB;">40%</div>
+                <div class="mechanism-label">Cost Reduction<br>(0.96pp)</div>
+            </div>
+            <div class="mechanism-item">
+                <div class="mechanism-value" style="color: #E74C3C;">35%</div>
+                <div class="mechanism-label">Revenue Enhancement<br>(0.84pp)</div>
+            </div>
+            <div class="mechanism-item">
+                <div class="mechanism-value" style="color: #2ECC71;">25%</div>
+                <div class="mechanism-label">Innovation Acceleration<br>(0.60pp)</div>
+            </div>
+        </div>
+        
+        <div class="stats-box">
+            <strong>Statistical Details:</strong> All mechanisms significant at p < 0.01 level<br>
+            <strong>Sample Size:</strong> 542 firms, 6,504 firm-quarter observations<br>
+            <strong>Method:</strong> Causal mediation analysis with bootstrap confidence intervals
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('mechanismChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: [
+                    'Cost Reduction',
+                    'Revenue Enhancement', 
+                    'Innovation Acceleration'
+                ],
+                datasets: [{
+                    data: [40.2, 35.1, 24.7],
+                    backgroundColor: [
+                        '#3498DB',
+                        '#E74C3C',
+                        '#2ECC71'
+                    ],
+                    borderColor: [
+                        '#2E86C1',
+                        '#C0392B',
+                        '#27AE60'
+                    ],
+                    borderWidth: 3,
+                    hoverBorderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                devicePixelRatio: 2,
+                cutout: '40%',
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Mechanism Decomposition of AI Productivity Effect (2.4% Total)',
+                        font: { 
+                            size: 18, 
+                            weight: 'bold', 
+                            family: 'Times New Roman' 
+                        },
+                        color: '#000',
+                        padding: 20
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 14 
+                            },
+                            color: '#000',
+                            padding: 20,
+                            generateLabels: function(chart) {
+                                const data = chart.data;
+                                if (data.labels.length && data.datasets.length) {
+                                    return data.labels.map((label, index) => {
+                                        const value = data.datasets[0].data[index];
+                                        const absoluteEffect = (value/100 * 2.4).toFixed(2);
+                                        return {
+                                            text: `${label}: ${value}% (${absoluteEffect}pp)`,
+                                            fillStyle: data.datasets[0].backgroundColor[index],
+                                            strokeStyle: data.datasets[0].borderColor[index],
+                                            lineWidth: data.datasets[0].borderWidth,
+                                            hidden: false,
+                                            index: index
+                                        };
+                                    });
+                                }
+                                return [];
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const label = context.label || '';
+                                const value = context.parsed;
+                                const percentage = value.toFixed(1) + '%';
+                                const absoluteEffect = (value/100 * 2.4).toFixed(3) + ' percentage points';
+                                return [`${label}: ${percentage}`, `Absolute Effect: ${absoluteEffect}`];
+                            }
+                        },
+                        titleFont: {
+                            family: 'Times New Roman',
+                            size: 14
+                        },
+                        bodyFont: {
+                            family: 'Times New Roman',
+                            size: 12
+                        }
+                    }
+                },
+                elements: {
+                    arc: {
+                        borderAlign: 'center'
+                    }
+                }
+            },
+            plugins: [{
+                id: 'centerText',
+                afterDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    const centerX = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
+                    const centerY = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
+                    
+                    ctx.save();
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    
+                    // Main text
+                    ctx.fillStyle = '#333';
+                    ctx.font = 'bold 20px Times New Roman';
+                    ctx.fillText('Total Effect', centerX, centerY - 8);
+                    
+                    // Value
+                    ctx.fillStyle = '#E74C3C';
+                    ctx.font = 'bold 28px Times New Roman';
+                    ctx.fillText('2.4%', centerX, centerY + 15);
+                    
+                    ctx.restore();
+                }
+            }]
+        });
+
+        function downloadChart() {
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = 1600;
+            tempCanvas.height = 1200;
+            tempCtx.fillStyle = 'white';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+            tempCtx.drawImage(ctx.canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+            
+            const link = document.createElement('a');
+            link.download = 'figure2_mechanism_decomposition.png';
+            link.href = tempCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+    </script>
+</body>
+</html>

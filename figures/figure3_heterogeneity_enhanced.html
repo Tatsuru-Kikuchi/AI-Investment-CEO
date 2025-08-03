@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure 3: Heterogeneous Treatment Effects</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+        }
+        .figure-container {
+            width: 900px;
+            height: 700px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .download-btn {
+            background: #2ECC71;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', serif;
+            font-size: 14px;
+        }
+        .download-btn:hover {
+            background: #27AE60;
+        }
+        .chart-container {
+            position: relative;
+            height: 450px;
+            width: 100%;
+        }
+        .stats-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 12px;
+        }
+        .stats-table th, .stats-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .stats-table th {
+            background-color: #f1f3f4;
+            font-weight: bold;
+        }
+        .highlight-box {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            text-align: center;
+            border-left: 4px solid #2ECC71;
+        }
+        .highlight-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2ECC71;
+        }
+    </style>
+</head>
+<body>
+    <div class="figure-container">
+        <div class="highlight-box">
+            <div style="font-size: 16px; margin-bottom: 5px;">Key Finding</div>
+            <div class="highlight-value">5.2× Difference</div>
+            <div style="font-size: 14px;">Large firms achieve 5.2× higher productivity gains than micro firms</div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="heterogeneityChart"></canvas>
+        </div>
+        
+        <div style="text-align: center; margin-top: 10px;">
+            <button class="download-btn" onclick="downloadChart()">📥 Download PNG</button>
+            <button class="download-btn" onclick="window.print()">🖨️ Print</button>
+        </div>
+        
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Firm Size</th>
+                    <th>Employees</th>
+                    <th>Total Effect (%)</th>
+                    <th>Standard Error</th>
+                    <th>Observations</th>
+                    <th>Relative to Baseline</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Micro</strong></td>
+                    <td>1-10</td>
+                    <td><strong>0.8***</strong></td>
+                    <td>(0.4)</td>
+                    <td>588</td>
+                    <td>0.33×</td>
+                </tr>
+                <tr>
+                    <td><strong>Small</strong></td>
+                    <td>11-50</td>
+                    <td><strong>1.5**</strong></td>
+                    <td>(0.6)</td>
+                    <td>664</td>
+                    <td>0.63×</td>
+                </tr>
+                <tr>
+                    <td><strong>Medium</strong></td>
+                    <td>51-250</td>
+                    <td><strong>2.3***</strong></td>
+                    <td>(0.5)</td>
+                    <td>788</td>
+                    <td>0.96×</td>
+                </tr>
+                <tr>
+                    <td><strong>Large</strong></td>
+                    <td>250+</td>
+                    <td><strong>4.2***</strong></td>
+                    <td>(0.8)</td>
+                    <td>780</td>
+                    <td>1.75×</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p style="font-size: 11px; margin-top: 10px; text-align: center;">
+            <strong>Notes:</strong> *** p<0.01, ** p<0.05, * p<0.1. Standard errors clustered at firm level. 
+            Baseline effect is overall sample average (2.4%). Effects measured as quarterly productivity growth.
+        </p>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('heterogeneityChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Micro\n(1-10 employees)', 
+                    'Small\n(11-50 employees)', 
+                    'Medium\n(51-250 employees)', 
+                    'Large\n(250+ employees)'
+                ],
+                datasets: [
+                    {
+                        label: 'Productivity Effect (%)',
+                        data: [0.8, 1.5, 2.3, 4.2],
+                        backgroundColor: ['#3498DB', '#9B59B6', '#E67E22', '#E74C3C'],
+                        borderColor: ['#2980B9', '#8E44AD', '#D35400', '#C0392B'],
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                devicePixelRatio: 2,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Heterogeneous Treatment Effects by Firm Size',
+                        font: { 
+                            size: 18, 
+                            weight: 'bold', 
+                            family: 'Times New Roman' 
+                        },
+                        color: '#000',
+                        padding: 20
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 14 
+                            },
+                            color: '#000'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.parsed.y;
+                                const multipliers = [0.33, 0.63, 0.96, 1.75];
+                                const observations = [588, 664, 788, 780];
+                                const index = context.dataIndex;
+                                return [
+                                    `Productivity Effect: ${value.toFixed(1)}%`,
+                                    `Relative to baseline: ${multipliers[index]}×`,
+                                    `Observations: ${observations[index]} firms`
+                                ];
+                            }
+                        },
+                        titleFont: {
+                            family: 'Times New Roman',
+                            size: 14
+                        },
+                        bodyFont: {
+                            family: 'Times New Roman',
+                            size: 12
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Firm Size Category',
+                            font: { 
+                                size: 16, 
+                                weight: 'bold', 
+                                family: 'Times New Roman' 
+                            },
+                            color: '#000'
+                        },
+                        ticks: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 12 
+                            },
+                            color: '#000',
+                            maxRotation: 0,
+                            minRotation: 0
+                        },
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Quarterly Productivity Growth Effect (%)',
+                            font: { 
+                                size: 16, 
+                                weight: 'bold', 
+                                family: 'Times New Roman' 
+                            },
+                            color: '#000'
+                        },
+                        ticks: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 14 
+                            },
+                            color: '#000',
+                            callback: function(value) {
+                                return value.toFixed(1) + '%';
+                            }
+                        },
+                        grid: { 
+                            color: '#E5E5E5',
+                            lineWidth: 1
+                        },
+                        beginAtZero: true,
+                        max: 5
+                    }
+                }
+            },
+            plugins: [{
+                id: 'dataLabels',
+                afterDatasetsDraw: function(chart) {
+                    const ctx = chart.ctx;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const data = dataset.data[index];
+                            const significance = ['***', '**', '***', '***'][index];
+                            
+                            ctx.fillStyle = '#000';
+                            ctx.font = 'bold 14px Times New Roman';
+                            ctx.textAlign = 'center';
+                            ctx.textBaseline = 'bottom';
+                            
+                            const x = bar.x;
+                            const y = bar.y - 5;
+                            
+                            ctx.fillText(data.toFixed(1) + '%' + significance, x, y);
+                        });
+                    });
+                }
+            }]
+        });
+
+        function downloadChart() {
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCanvas.width = 1600;
+            tempCanvas.height = 1200;
+            tempCtx.fillStyle = 'white';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+            tempCtx.drawImage(ctx.canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+            
+            const link = document.createElement('a');
+            link.download = 'figure3_heterogeneous_effects.png';
+            link.href = tempCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+    </script>
+</body>
+</html>
