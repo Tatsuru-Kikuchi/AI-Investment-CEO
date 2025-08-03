@@ -2,7 +2,6 @@
   <defs>
     <style>
       .figure { font-family: 'Times New Roman', serif; }
-      .title { font-size: 14px; font-weight: bold; text-anchor: middle; }
       .axis-label { font-size: 12px; text-anchor: middle; }
       .tick-label { font-size: 10px; text-anchor: middle; }
       .bar { stroke: #000; stroke-width: 1; }
@@ -12,9 +11,6 @@
   
   <!-- White background -->
   <rect width="700" height="500" fill="white"/>
-  
-  <!-- Title -->
-  <text x="350" y="30" class="title">Figure 4: Heterogeneity in AI Productivity Effects Across Industries</text>
   
   <!-- Bars -->
   <rect x="80" y="220" width="90" height="155" fill="#3b82f6" class="bar"/>
