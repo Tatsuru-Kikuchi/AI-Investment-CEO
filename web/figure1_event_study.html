@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figure 1: Event Study - Dynamic Treatment Effects</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            margin: 0;
+            padding: 20px;
+            background: white;
+        }
+        .figure-container {
+            width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .download-btn {
+            background: #2E86C1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Times New Roman', serif;
+            font-size: 14px;
+        }
+        .download-btn:hover {
+            background: #1B4F72;
+        }
+        .instructions {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 15px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+        }
+        .chart-container {
+            position: relative;
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h3>📊 Figure 1: Event Study - Dynamic Treatment Effects</h3>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Right-click on the chart below</li>
+            <li>Select "Save image as..." or "Copy image"</li>
+            <li>Save as "event_study_plot.png"</li>
+            <li>Use this file in your LaTeX manuscript</li>
+        </ol>
+        <p><strong>Alternative:</strong> Click the download button to get a high-resolution PNG file.</p>
+    </div>
+
+    <div class="figure-container">
+        <div class="chart-container">
+            <canvas id="eventStudyChart"></canvas>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <button class="download-btn" onclick="downloadChart()">📥 Download High-Resolution PNG</button>
+            <button class="download-btn" onclick="window.print()">🖨️ Print Figure</button>
+        </div>
+    </div>
+
+    <script>
+        // Create the event study chart
+        const ctx = document.getElementById('eventStudyChart').getContext('2d');
+        
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['-4', '-3', '-2', '-1', '0', '1', '2', '3', '4', '5', '6'],
+                datasets: [
+                    {
+                        label: 'Treatment Effect',
+                        data: [-0.002, 0.001, 0.003, 0.005, 0.008, 0.015, 0.024, 0.028, 0.026, 0.025, 0.024],
+                        borderColor: '#2E86C1',
+                        backgroundColor: 'transparent',
+                        borderWidth: 4,
+                        pointRadius: 8,
+                        pointBackgroundColor: '#2E86C1',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 3,
+                        tension: 0.1
+                    },
+                    {
+                        label: '95% Confidence Interval',
+                        data: [0.012, 0.013, 0.015, 0.017, 0.019, 0.024, 0.034, 0.039, 0.038, 0.036, 0.035],
+                        borderColor: '#E74C3C',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        borderDash: [8, 4],
+                        pointRadius: 0,
+                        fill: false
+                    },
+                    {
+                        label: '',
+                        data: [-0.016, -0.011, -0.009, -0.007, -0.003, 0.006, 0.014, 0.017, 0.014, 0.014, 0.013],
+                        borderColor: '#E74C3C',
+                        backgroundColor: 'transparent',
+                        borderWidth: 2,
+                        borderDash: [8, 4],
+                        pointRadius: 0,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                devicePixelRatio: 2,
+                plugins: {
+                    title: {
+                        display: false
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 14 
+                            },
+                            color: '#000',
+                            filter: function(legendItem, chartData) {
+                                return legendItem.text !== '';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Quarters Relative to AI Implementation',
+                            font: { 
+                                size: 16, 
+                                weight: 'bold', 
+                                family: 'Times New Roman' 
+                            },
+                            color: '#000'
+                        },
+                        grid: { 
+                            color: '#E5E5E5',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 14 
+                            },
+                            color: '#000'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Productivity Growth Effect',
+                            font: { 
+                                size: 16, 
+                                weight: 'bold', 
+                                family: 'Times New Roman' 
+                            },
+                            color: '#000'
+                        },
+                        grid: { 
+                            color: '#E5E5E5',
+                            lineWidth: 1
+                        },
+                        ticks: {
+                            font: { 
+                                family: 'Times New Roman', 
+                                size: 14 
+                            },
+                            color: '#000',
+                            callback: function(value) {
+                                return (value * 100).toFixed(1) + '%';
+                            }
+                        }
+                    }
+                },
+                elements: {
+                    line: {
+                        tension: 0.1
+                    }
+                }
+            }
+        });
+
+        function downloadChart() {
+            // Create a temporary canvas with higher resolution
+            const tempCanvas = document.createElement('canvas');
+            const tempCtx = tempCanvas.getContext('2d');
+            
+            // Set high resolution
+            tempCanvas.width = 1600;
+            tempCanvas.height = 1200;
+            
+            // Fill white background
+            tempCtx.fillStyle = 'white';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+            
+            // Draw the chart
+            tempCtx.drawImage(ctx.canvas, 0, 0, tempCanvas.width, tempCanvas.height);
+            
+            // Download the image
+            const link = document.createElement('a');
+            link.download = 'event_study_plot.png';
+            link.href = tempCanvas.toDataURL('image/png', 1.0);
+            link.click();
+        }
+
+        // Add zero line
+        Chart.register({
+            id: 'zeroLine',
+            afterDraw: function(chart) {
+                const ctx = chart.ctx;
+                const yAxis = chart.scales.y;
+                const xAxis = chart.scales.x;
+                
+                if (yAxis.min <= 0 && yAxis.max >= 0) {
+                    const y = yAxis.getPixelForValue(0);
+                    
+                    ctx.save();
+                    ctx.strokeStyle = '#666';
+                    ctx.lineWidth = 2;
+                    ctx.setLineDash([5, 5]);
+                    ctx.beginPath();
+                    ctx.moveTo(xAxis.left, y);
+                    ctx.lineTo(xAxis.right, y);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                
+                // Add vertical line at treatment time
+                const x = xAxis.getPixelForValue('0');
+                ctx.save();
+                ctx.strokeStyle = '#E74C3C';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([]);
+                ctx.beginPath();
+                ctx.moveTo(x, yAxis.top);
+                ctx.lineTo(x, yAxis.bottom);
+                ctx.stroke();
+                ctx.restore();
+            }
+        });
+    </script>
+</body>
+</html>
