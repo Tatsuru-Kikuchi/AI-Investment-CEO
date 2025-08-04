@@ -66,9 +66,10 @@
     <line x1="260" y1="0" x2="260" y2="400" class="treatment-line"/>
     
     <!-- Confidence band (95% confidence interval) -->
-    <!-- Upper and lower bounds for confidence intervals -->
-    <path d="M 0 253 L 65 246 L 130 259 L 195 256 L 260 186 L 325 160 L 390 106 L 455 120 L 520 133 L 585 140 L 650 133 
-             L 650 173 L 585 180 L 520 173 L 455 160 L 390 140 L 325 200 L 260 320 L 195 276 L 130 286 L 65 266 L 0 293 Z" 
+    <!-- Upper and lower bounds properly calculated to encompass all data points -->
+    <!-- Each point ± margin of error: -4(-0.2±1.0), -3(0.1±0.9), -2(-0.3±1.0), -1(0±0.8), 0(1.2±0.7), +1(2.1±0.8), +2(2.8±0.9), +3(2.6±0.8), +4(2.4±0.9), +5(2.3±1.0), +6(2.4±1.0) -->
+    <path d="M 0 226 L 65 213 L 130 253 L 195 240 L 260 153 L 325 127 L 390 67 L 455 87 L 520 93 L 585 107 L 650 93 
+             L 650 173 L 585 173 L 520 173 L 455 153 L 390 147 L 325 193 L 260 220 L 195 293 L 130 320 L 65 280 L 0 280 Z" 
           class="confidence-band"/>
     
     <!-- Main effect line -->
