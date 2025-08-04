@@ -1,4 +1,4 @@
-<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="550" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <style>
       .subtitle-text { font-family: 'Times New Roman', Times, serif; font-size: 14px; fill: #34495e; text-anchor: middle; }
@@ -15,179 +15,179 @@
       .annotation-text { font-family: 'Times New Roman', Times, serif; font-size: 11px; font-weight: bold; }
       .legend-text { font-family: 'Times New Roman', Times, serif; font-size: 10px; fill: #2c3e50; }
       .stats-text { font-family: 'Times New Roman', Times, serif; font-size: 10px; fill: #2c3e50; }
-      .notes-text { font-family: 'Times New Roman', Times, serif; font-size: 9px; fill: #5d6d7e; }
       .highlight-yellow { fill: #fff3cd; stroke: #ffeaa7; stroke-width: 1; }
     </style>
   </defs>
   
   <!-- White background -->
-  <rect width="900" height="700" fill="white"/>
+  <rect width="900" height="550" fill="white"/>
   
   <!-- Title (subtitle only, no figure number) -->
   <text x="450" y="35" class="subtitle-text">Quarterly Productivity Growth Relative to Control Group</text>
   
   <!-- Main chart area -->
-  <g transform="translate(80,70)">
+  <g transform="translate(80,60)">
     
-    <!-- Chart background with THICK BOTTOM BORDER for horizontal axis -->
-    <rect x="0" y="0" width="650" height="395" fill="#fdfdfe" stroke="#e8e8e8" stroke-width="0.5"/>
-    <rect x="0" y="395" width="650" height="5" fill="#000000"/> <!-- THICK BLACK HORIZONTAL AXIS -->
+    <!-- Chart background -->
+    <rect x="0" y="0" width="650" height="300" fill="#fdfdfe" stroke="#e8e8e8" stroke-width="0.5"/>
+    
+    <!-- VERY THICK BLACK HORIZONTAL AXIS BAR -->
+    <rect x="0" y="300" width="650" height="8" fill="#000000" stroke="none"/>
     
     <!-- Grid lines (drawn first, behind everything) -->
     <!-- Vertical grid lines -->
     <g>
-      <line x1="65" y1="0" x2="65" y2="395" class="grid-line"/>
-      <line x1="130" y1="0" x2="130" y2="395" class="grid-line"/>
-      <line x1="195" y1="0" x2="195" y2="395" class="grid-line"/>
-      <line x1="260" y1="0" x2="260" y2="395" class="grid-line"/>
-      <line x1="325" y1="0" x2="325" y2="395" class="grid-line"/>
-      <line x1="390" y1="0" x2="390" y2="395" class="grid-line"/>
-      <line x1="455" y1="0" x2="455" y2="395" class="grid-line"/>
-      <line x1="520" y1="0" x2="520" y2="395" class="grid-line"/>
-      <line x1="585" y1="0" x2="585" y2="395" class="grid-line"/>
-      <line x1="650" y1="0" x2="650" y2="395" class="grid-line"/>
+      <line x1="65" y1="0" x2="65" y2="300" class="grid-line"/>
+      <line x1="130" y1="0" x2="130" y2="300" class="grid-line"/>
+      <line x1="195" y1="0" x2="195" y2="300" class="grid-line"/>
+      <line x1="260" y1="0" x2="260" y2="300" class="grid-line"/>
+      <line x1="325" y1="0" x2="325" y2="300" class="grid-line"/>
+      <line x1="390" y1="0" x2="390" y2="300" class="grid-line"/>
+      <line x1="455" y1="0" x2="455" y2="300" class="grid-line"/>
+      <line x1="520" y1="0" x2="520" y2="300" class="grid-line"/>
+      <line x1="585" y1="0" x2="585" y2="300" class="grid-line"/>
+      <line x1="650" y1="0" x2="650" y2="300" class="grid-line"/>
     </g>
     
-    <!-- Horizontal grid lines (stopping before the black axis area) -->
+    <!-- Horizontal grid lines -->
     <g>
-      <line x1="0" y1="65.8" x2="650" y2="65.8" class="grid-line"/>  <!-- 3% -->
-      <line x1="0" y1="131.7" x2="650" y2="131.7" class="grid-line"/> <!-- 2% -->
-      <line x1="0" y1="197.5" x2="650" y2="197.5" class="grid-line"/> <!-- 1% -->
-      <line x1="0" y1="263.3" x2="650" y2="263.3" class="grid-line"/> <!-- 0% -->
-      <line x1="0" y1="329.2" x2="650" y2="329.2" class="grid-line"/> <!-- -1% -->
+      <line x1="0" y1="50" x2="650" y2="50" class="grid-line"/>   <!-- 3% -->
+      <line x1="0" y1="100" x2="650" y2="100" class="grid-line"/> <!-- 2% -->
+      <line x1="0" y1="150" x2="650" y2="150" class="grid-line"/> <!-- 1% -->
+      <line x1="0" y1="200" x2="650" y2="200" class="grid-line"/> <!-- 0% -->
+      <line x1="0" y1="250" x2="650" y2="250" class="grid-line"/> <!-- -1% -->
     </g>
     
     <!-- Zero line (0%) -->
-    <line x1="0" y1="263.3" x2="650" y2="263.3" class="zero-line"/>
+    <line x1="0" y1="200" x2="650" y2="200" class="zero-line"/>
     
     <!-- Treatment implementation line -->
-    <line x1="260" y1="0" x2="260" y2="395" class="treatment-line"/>
+    <line x1="260" y1="0" x2="260" y2="300" class="treatment-line"/>
     
-    <!-- Confidence band (95% confidence interval) - adjusted for new scale -->
-    <!-- Y-scale adjusted: 4%=0, 3%=65.8, 2%=131.7, 1%=197.5, 0%=263.3, -1%=329.2, -2%=395 -->
-    <path d="M 0 223 L 65 210 L 130 250 L 195 237 L 260 150 L 325 125 L 390 65 L 455 85 L 520 91 L 585 105 L 650 91 
-             L 650 171 L 585 171 L 520 171 L 455 151 L 390 145 L 325 191 L 260 217 L 195 290 L 130 317 L 65 277 L 0 277 Z" 
+    <!-- Y-scale: 4%=0, 3%=50, 2%=100, 1%=150, 0%=200, -1%=250, -2%=300 -->
+    <!-- Confidence band -->
+    <path d="M 0 170 L 65 160 L 130 190 L 195 185 L 260 115 L 325 95 L 390 50 L 455 65 L 520 70 L 585 80 L 650 70 
+             L 650 130 L 585 130 L 520 130 L 455 115 L 390 110 L 325 145 L 260 165 L 195 220 L 130 240 L 65 210 L 0 210 Z" 
           class="confidence-band"/>
     
-    <!-- Main effect line - adjusted coordinates -->
-    <!-- Points: -4:250, -3:243, -2:283, -1:263.3, 0:184, +1:158, +2:105, +3:118, +4:131, +5:138, +6:131 -->
-    <path d="M 0 250 L 65 243 L 130 283 L 195 263.3 L 260 184 L 325 158 L 390 105 L 455 118 L 520 131 L 585 138 L 650 131" 
+    <!-- Main effect line -->
+    <!-- Points: -4:190, -3:185, -2:215, -1:200, 0:140, +1:120, +2:80, +3:90, +4:100, +5:105, +6:100 -->
+    <path d="M 0 190 L 65 185 L 130 215 L 195 200 L 260 140 L 325 120 L 390 80 L 455 90 L 520 100 L 585 105 L 650 100" 
           class="effect-line"/>
     
     <!-- Data points -->
     <!-- Pre-treatment points (quarters -4 to -1) -->
-    <circle cx="0" cy="250" r="4" class="pre-treatment-dot"/>      <!-- -0.2% -->
-    <circle cx="65" cy="243" r="4" class="pre-treatment-dot"/>     <!-- 0.1% -->
-    <circle cx="130" cy="283" r="4" class="pre-treatment-dot"/>    <!-- -0.3% -->
-    <circle cx="195" cy="263.3" r="4" class="pre-treatment-dot"/>  <!-- 0.0% -->
+    <circle cx="0" cy="190" r="4" class="pre-treatment-dot"/>      <!-- -0.2% -->
+    <circle cx="65" cy="185" r="4" class="pre-treatment-dot"/>     <!-- 0.1% -->
+    <circle cx="130" cy="215" r="4" class="pre-treatment-dot"/>    <!-- -0.3% -->
+    <circle cx="195" cy="200" r="4" class="pre-treatment-dot"/>    <!-- 0.0% -->
     
     <!-- Implementation point (quarter 0) -->
-    <circle cx="260" cy="184" r="5" class="implementation-dot"/>   <!-- 1.2% -->
+    <circle cx="260" cy="140" r="5" class="implementation-dot"/>   <!-- 1.2% -->
     
     <!-- Post-treatment points (quarters +1 to +6) -->
-    <circle cx="325" cy="158" r="5" class="post-treatment-dot"/>   <!-- 2.1% -->
-    <circle cx="390" cy="105" r="5" class="post-treatment-dot"/>   <!-- 2.8% -->
-    <circle cx="455" cy="118" r="5" class="post-treatment-dot"/>   <!-- 2.6% -->
-    <circle cx="520" cy="131" r="5" class="post-treatment-dot"/>   <!-- 2.4% -->
-    <circle cx="585" cy="138" r="5" class="post-treatment-dot"/>   <!-- 2.3% -->
-    <circle cx="650" cy="131" r="5" class="post-treatment-dot"/>   <!-- 2.4% -->
+    <circle cx="325" cy="120" r="5" class="post-treatment-dot"/>   <!-- 2.1% -->
+    <circle cx="390" cy="80" r="5" class="post-treatment-dot"/>    <!-- 2.8% -->
+    <circle cx="455" cy="90" r="5" class="post-treatment-dot"/>    <!-- 2.6% -->
+    <circle cx="520" cy="100" r="5" class="post-treatment-dot"/>   <!-- 2.4% -->
+    <circle cx="585" cy="105" r="5" class="post-treatment-dot"/>   <!-- 2.3% -->
+    <circle cx="650" cy="100" r="5" class="post-treatment-dot"/>   <!-- 2.4% -->
     
     <!-- Y-axis (vertical axis) -->
-    <line x1="0" y1="0" x2="0" y2="395" stroke="#000000" stroke-width="3"/>
+    <line x1="0" y1="0" x2="0" y2="300" stroke="#000000" stroke-width="4"/>
     
-    <!-- X-axis ticks and labels (on the black horizontal axis) -->
+    <!-- X-axis ticks and labels -->
     <g>
-      <line x1="0" y1="400" x2="0" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="0" y="430" text-anchor="middle" class="tick-text">-4</text>
+      <line x1="0" y1="308" x2="0" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="0" y="340" text-anchor="middle" class="tick-text">-4</text>
       
-      <line x1="65" y1="400" x2="65" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="65" y="430" text-anchor="middle" class="tick-text">-3</text>
+      <line x1="65" y1="308" x2="65" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="65" y="340" text-anchor="middle" class="tick-text">-3</text>
       
-      <line x1="130" y1="400" x2="130" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="130" y="430" text-anchor="middle" class="tick-text">-2</text>
+      <line x1="130" y1="308" x2="130" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="130" y="340" text-anchor="middle" class="tick-text">-2</text>
       
-      <line x1="195" y1="400" x2="195" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="195" y="430" text-anchor="middle" class="tick-text">-1</text>
+      <line x1="195" y1="308" x2="195" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="195" y="340" text-anchor="middle" class="tick-text">-1</text>
       
-      <line x1="260" y1="400" x2="260" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="260" y="430" text-anchor="middle" class="tick-text" font-weight="bold">AI Adoption</text>
+      <line x1="260" y1="308" x2="260" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="260" y="340" text-anchor="middle" class="tick-text" font-weight="bold">AI Adoption</text>
       
-      <line x1="325" y1="400" x2="325" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="325" y="430" text-anchor="middle" class="tick-text">+1</text>
+      <line x1="325" y1="308" x2="325" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="325" y="340" text-anchor="middle" class="tick-text">+1</text>
       
-      <line x1="390" y1="400" x2="390" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="390" y="430" text-anchor="middle" class="tick-text">+2</text>
+      <line x1="390" y1="308" x2="390" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="390" y="340" text-anchor="middle" class="tick-text">+2</text>
       
-      <line x1="455" y1="400" x2="455" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="455" y="430" text-anchor="middle" class="tick-text">+3</text>
+      <line x1="455" y1="308" x2="455" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="455" y="340" text-anchor="middle" class="tick-text">+3</text>
       
-      <line x1="520" y1="400" x2="520" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="520" y="430" text-anchor="middle" class="tick-text">+4</text>
+      <line x1="520" y1="308" x2="520" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="520" y="340" text-anchor="middle" class="tick-text">+4</text>
       
-      <line x1="585" y1="400" x2="585" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="585" y="430" text-anchor="middle" class="tick-text">+5</text>
+      <line x1="585" y1="308" x2="585" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="585" y="340" text-anchor="middle" class="tick-text">+5</text>
       
-      <line x1="650" y1="400" x2="650" y2="415" stroke="#000000" stroke-width="2"/>
-      <text x="650" y="430" text-anchor="middle" class="tick-text">+6</text>
+      <line x1="650" y1="308" x2="650" y2="325" stroke="#000000" stroke-width="3"/>
+      <text x="650" y="340" text-anchor="middle" class="tick-text">+6</text>
     </g>
     
     <!-- Y-axis ticks and labels -->
     <g>      
-      <line x1="-5" y1="329.2" x2="0" y2="329.2" stroke="#000000" stroke-width="2"/>
-      <text x="-10" y="334" text-anchor="end" class="tick-text">-1%</text>
+      <line x1="-5" y1="250" x2="0" y2="250" stroke="#000000" stroke-width="3"/>
+      <text x="-10" y="255" text-anchor="end" class="tick-text">-1%</text>
       
-      <line x1="-5" y1="263.3" x2="0" y2="263.3" stroke="#000000" stroke-width="2"/>
-      <text x="-10" y="268" text-anchor="end" class="tick-text">0%</text>
+      <line x1="-5" y1="200" x2="0" y2="200" stroke="#000000" stroke-width="3"/>
+      <text x="-10" y="205" text-anchor="end" class="tick-text">0%</text>
       
-      <line x1="-5" y1="197.5" x2="0" y2="197.5" stroke="#000000" stroke-width="2"/>
-      <text x="-10" y="202" text-anchor="end" class="tick-text">1%</text>
+      <line x1="-5" y1="150" x2="0" y2="150" stroke="#000000" stroke-width="3"/>
+      <text x="-10" y="155" text-anchor="end" class="tick-text">1%</text>
       
-      <line x1="-5" y1="131.7" x2="0" y2="131.7" stroke="#000000" stroke-width="2"/>
-      <text x="-10" y="136" text-anchor="end" class="tick-text">2%</text>
+      <line x1="-5" y1="100" x2="0" y2="100" stroke="#000000" stroke-width="3"/>
+      <text x="-10" y="105" text-anchor="end" class="tick-text">2%</text>
       
-      <line x1="-5" y1="65.8" x2="0" y2="65.8" stroke="#000000" stroke-width="2"/>
-      <text x="-10" y="70" text-anchor="end" class="tick-text">3%</text>
+      <line x1="-5" y1="50" x2="0" y2="50" stroke="#000000" stroke-width="3"/>
+      <text x="-10" y="55" text-anchor="end" class="tick-text">3%</text>
       
-      <line x1="-5" y1="0" x2="0" y2="0" stroke="#000000" stroke-width="2"/>
+      <line x1="-5" y1="0" x2="0" y2="0" stroke="#000000" stroke-width="3"/>
       <text x="-10" y="5" text-anchor="end" class="tick-text">4%</text>
       
-      <!-- Y-axis tick at bottom -->
-      <line x1="-5" y1="395" x2="0" y2="395" stroke="#000000" stroke-width="2"/>
-      <text x="-10" y="400" text-anchor="end" class="tick-text">-2%</text>
+      <line x1="-5" y1="300" x2="0" y2="300" stroke="#000000" stroke-width="3"/>
+      <text x="-10" y="305" text-anchor="end" class="tick-text">-2%</text>
     </g>
     
     <!-- Axis labels -->
-    <text x="325" y="460" text-anchor="middle" class="axis-label">Quarters Relative to AI Adoption</text>
-    <text x="-45" y="197" text-anchor="middle" transform="rotate(-90, -45, 197)" class="axis-label">Productivity Effect (%)</text>
+    <text x="325" y="370" text-anchor="middle" class="axis-label">Quarters Relative to AI Adoption</text>
+    <text x="-35" y="150" text-anchor="middle" transform="rotate(-90, -35, 150)" class="axis-label">Productivity Effect (%)</text>
     
     <!-- AI Implementation label -->
-    <text x="268" y="20" class="annotation-text" fill="#e74c3c">AI Implementation</text>
+    <text x="268" y="15" class="annotation-text" fill="#e74c3c">AI Implementation</text>
     
     <!-- Peak effect annotation -->
-    <text x="400" y="95" class="annotation-text" fill="#e67e22">Peak: 2.8%</text>
+    <text x="400" y="70" class="annotation-text" fill="#e67e22">Peak: 2.8%</text>
     
     <!-- Long-run effect annotation -->
-    <text x="580" y="121" class="annotation-text" fill="#e67e22">Long-run: 2.4%</text>
+    <text x="580" y="90" class="annotation-text" fill="#e67e22">Long-run: 2.4%</text>
     
     <!-- Legend -->
-    <g transform="translate(480, 30)">
+    <g transform="translate(480, 25)">
       <circle cx="8" cy="0" r="4" class="pre-treatment-dot"/>
       <text x="20" y="4" class="legend-text">Pre-treatment</text>
       
-      <circle cx="8" cy="20" r="4" class="implementation-dot"/>
-      <text x="20" y="24" class="legend-text">Implementation</text>
+      <circle cx="8" cy="18" r="4" class="implementation-dot"/>
+      <text x="20" y="22" class="legend-text">Implementation</text>
       
-      <circle cx="8" cy="40" r="4" class="post-treatment-dot"/>
-      <text x="20" y="44" class="legend-text">Post-treatment</text>
+      <circle cx="8" cy="36" r="4" class="post-treatment-dot"/>
+      <text x="20" y="40" class="legend-text">Post-treatment</text>
       
-      <rect x="4" y="56" width="8" height="8" fill="#3498db" fill-opacity="0.25"/>
-      <text x="20" y="64" class="legend-text">95% Confidence Interval</text>
+      <rect x="4" y="50" width="8" height="8" fill="#3498db" fill-opacity="0.25"/>
+      <text x="20" y="58" class="legend-text">95% Confidence Interval</text>
     </g>
     
   </g>
   
   <!-- Statistics panel -->
-  <g transform="translate(50, 490)">
+  <g transform="translate(50, 400)">
     <rect width="800" height="80" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="3"/>
     
     <!-- Left column -->
@@ -215,15 +215,6 @@
     
     <text x="420" y="50" class="stats-text">
       <tspan font-weight="bold">Parallel trends:</tspan> Supported (pre-treatment coefficients near zero)
-    </text>
-  </g>
-  
-  <!-- Notes -->
-  <g transform="translate(50, 590)">
-    <text x="0" y="0" class="notes-text">
-      <tspan x="0"><tspan font-weight="bold">Notes:</tspan> This figure shows the dynamic treatment effects of AI adoption using event study methodology. Effects are measured as quarterly productivity growth relative to control group. The vertical red line indicates AI</tspan>
-      <tspan x="0" dy="12">implementation (quarter 0). Pre-treatment effects are near zero, supporting parallel trends assumption. Peak effect of 2.8% occurs at quarter 2, with long-run effect stabilizing at 2.4%. 95% confidence intervals shown in</tspan>
-      <tspan x="0" dy="12">blue shading. Sample includes firms that adopted AI between 2019-2022, with at least 4 quarters of pre-treatment data and 6 quarters of post-treatment follow-up.</tspan>
     </text>
   </g>
   
