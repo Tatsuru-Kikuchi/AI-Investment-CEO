@@ -1,28 +1,27 @@
-<svg width="650" height="450" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background -->
-  <rect width="650" height="450" fill="#ffffff"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="650" height="450" viewBox="0 0 650 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Clean background -->
+  <rect width="650" height="450" fill="white"/>
   
-  <!-- Chart area background -->
+  <!-- Chart area -->
   <rect x="100" y="50" width="500" height="280" fill="#fafafa" stroke="#e0e0e0" stroke-width="1"/>
   
   <!-- Grid lines -->
   <g stroke="#e8e8e8" stroke-width="0.5">
-    <line x1="100" y1="106" x2="600" y2="106"/>  <!-- 40% line -->
-    <line x1="100" y1="162" x2="600" y2="162"/> <!-- 30% line -->
-    <line x1="100" y1="218" x2="600" y2="218"/> <!-- 20% line -->
-    <line x1="100" y1="274" x2="600" y2="274"/> <!-- 10% line -->
+    <line x1="100" y1="106" x2="600" y2="106"/>
+    <line x1="100" y1="162" x2="600" y2="162"/>
+    <line x1="100" y1="218" x2="600" y2="218"/>
+    <line x1="100" y1="274" x2="600" y2="274"/>
   </g>
   
-  <!-- Axes -->
-  <g stroke="#000000" stroke-width="2" fill="none">
-    <!-- Y-axis -->
+  <!-- Main axes -->
+  <g stroke="black" stroke-width="2" fill="none">
     <line x1="100" y1="50" x2="100" y2="330"/>
-    <!-- X-axis -->
     <line x1="100" y1="330" x2="600" y2="330"/>
   </g>
   
-  <!-- Y-axis labels -->
-  <g font-family="Times New Roman" font-size="12" fill="#333333" text-anchor="end">
+  <!-- Y-axis scale labels -->
+  <g font-family="Times New Roman, serif" font-size="12" fill="black" text-anchor="end">
     <text x="95" y="335">0%</text>
     <text x="95" y="279">10%</text>
     <text x="95" y="223">20%</text>
@@ -31,36 +30,30 @@
     <text x="95" y="55">50%</text>
   </g>
   
-  <!-- Bars with gradient -->
+  <!-- Bar gradient definition -->
   <defs>
-    <linearGradient id="barGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3498db"/>
+      <stop offset="100%" stop-color="#2980b9"/>
     </linearGradient>
   </defs>
   
-  <!-- Bar 1: Under 45 (47%) -->
-  <rect x="130" y="67.4" width="80" height="262.6" fill="url(#barGradient)" stroke="#2980b9" stroke-width="1"/>
+  <!-- Data bars -->
+  <rect x="130" y="67.4" width="80" height="262.6" fill="url(#barGrad)" stroke="#2980b9" stroke-width="1"/>
+  <rect x="240" y="156.8" width="80" height="173.2" fill="url(#barGrad)" stroke="#2980b9" stroke-width="1"/>
+  <rect x="350" y="206.4" width="80" height="123.6" fill="url(#barGrad)" stroke="#2980b9" stroke-width="1"/>
+  <rect x="460" y="262.8" width="80" height="67.2" fill="url(#barGrad)" stroke="#2980b9" stroke-width="1"/>
   
-  <!-- Bar 2: 45-54 (31%) -->
-  <rect x="240" y="156.8" width="80" height="173.2" fill="url(#barGradient)" stroke="#2980b9" stroke-width="1"/>
-  
-  <!-- Bar 3: 55-64 (22%) -->
-  <rect x="350" y="206.4" width="80" height="123.6" fill="url(#barGradient)" stroke="#2980b9" stroke-width="1"/>
-  
-  <!-- Bar 4: 65+ (12%) -->
-  <rect x="460" y="262.8" width="80" height="67.2" fill="url(#barGradient)" stroke="#2980b9" stroke-width="1"/>
-  
-  <!-- Bar value labels (above bars) -->
-  <g font-family="Times New Roman" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle">
+  <!-- Value labels above bars -->
+  <g font-family="Times New Roman, serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle">
     <text x="170" y="60">47%</text>
     <text x="280" y="150">31%</text>
     <text x="390" y="200">22%</text>
     <text x="500" y="256">12%</text>
   </g>
   
-  <!-- X-axis category labels (below the horizontal axis) -->
-  <g font-family="Times New Roman" font-size="12" fill="#2c3e50" text-anchor="middle">
+  <!-- X-axis category labels -->
+  <g font-family="Times New Roman, serif" font-size="12" fill="#2c3e50" text-anchor="middle">
     <text x="170" y="350">Under 45</text>
     <text x="170" y="365">(n=127)</text>
     <text x="280" y="350">45-54</text>
@@ -72,20 +65,18 @@
   </g>
   
   <!-- Axis titles -->
-  <g font-family="Times New Roman" font-size="14" font-weight="bold" fill="#2c3e50">
-    <!-- Y-axis title (rotated, positioned on the left side) -->
-    <text x="30" y="190" text-anchor="middle" transform="rotate(-90, 30, 190)">AI Adoption Rate (%)</text>
-    <!-- X-axis title (below the category labels) -->
+  <g font-family="Times New Roman, serif" font-size="14" font-weight="bold" fill="#2c3e50">
+    <!-- Y-axis title (rotated) -->
+    <text x="30" y="190" text-anchor="middle" transform="rotate(-90 30 190)">AI Adoption Rate (%)</text>
+    <!-- X-axis title -->
     <text x="350" y="400" text-anchor="middle">CEO Age Categories</text>
   </g>
   
-  <!-- Trend line to show decline -->
-  <g stroke="#e74c3c" stroke-width="2" fill="none" stroke-dasharray="5,5" opacity="0.7">
-    <line x1="170" y1="67" x2="500" y2="263"/>
-  </g>
+  <!-- Trend line -->
+  <line x1="170" y1="67" x2="500" y2="263" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,5" opacity="0.7"/>
   
-  <!-- Statistical annotations -->
-  <g font-family="Times New Roman" font-size="10" fill="#7f8c8d">
+  <!-- Statistical annotation -->
+  <g font-family="Times New Roman, serif" font-size="10" fill="#7f8c8d">
     <text x="520" y="90">Strong negative</text>
     <text x="520" y="105">correlation</text>
     <text x="520" y="120">p &lt; 0.001</text>
@@ -93,7 +84,7 @@
   
   <!-- Key finding box -->
   <rect x="450" y="130" width="145" height="60" fill="#e8f4f8" stroke="#3498db" stroke-width="1" rx="3"/>
-  <g font-family="Times New Roman" font-size="9" fill="#2c3e50">
+  <g font-family="Times New Roman, serif" font-size="9" fill="#2c3e50">
     <text x="455" y="145" font-weight="bold">Key Finding:</text>
     <text x="455" y="160">4× difference between</text>
     <text x="455" y="172">youngest and oldest</text>
