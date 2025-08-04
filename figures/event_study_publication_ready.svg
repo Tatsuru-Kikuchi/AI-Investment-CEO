@@ -1,0 +1,237 @@
+<svg width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title-text { font-family: 'Times New Roman', Times, serif; font-size: 16px; font-weight: bold; fill: #2c3e50; text-anchor: middle; }
+      .subtitle-text { font-family: 'Times New Roman', Times, serif; font-size: 14px; fill: #34495e; text-anchor: middle; }
+      .axis-label { font-family: 'Times New Roman', Times, serif; font-size: 13px; font-weight: bold; fill: #2c3e50; }
+      .tick-text { font-family: 'Times New Roman', Times, serif; font-size: 11px; fill: #2c3e50; }
+      .grid-line { stroke: #ecf0f1; stroke-width: 0.5; }
+      .axis-line { stroke: #2c3e50; stroke-width: 1.5; }
+      .zero-line { stroke: #7f8c8d; stroke-width: 1; }
+      .treatment-line { stroke: #e74c3c; stroke-width: 2; stroke-dasharray: 8,4; }
+      .confidence-band { fill: #3498db; fill-opacity: 0.25; }
+      .effect-line { fill: none; stroke: #2980b9; stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+      .pre-treatment-dot { fill: #95a5a6; stroke: #ffffff; stroke-width: 2; }
+      .implementation-dot { fill: #2980b9; stroke: #ffffff; stroke-width: 2; }
+      .post-treatment-dot { fill: #e67e22; stroke: #ffffff; stroke-width: 2; }
+      .annotation-text { font-family: 'Times New Roman', Times, serif; font-size: 11px; font-weight: bold; }
+      .legend-text { font-family: 'Times New Roman', Times, serif; font-size: 10px; fill: #2c3e50; }
+      .stats-text { font-family: 'Times New Roman', Times, serif; font-size: 10px; fill: #2c3e50; }
+      .notes-text { font-family: 'Times New Roman', Times, serif; font-size: 9px; fill: #5d6d7e; }
+      .highlight-yellow { fill: #fff3cd; stroke: #ffeaa7; stroke-width: 1; }
+    </style>
+  </defs>
+  
+  <!-- White background -->
+  <rect width="900" height="700" fill="white"/>
+  
+  <!-- Title (subtitle only, no figure number) -->
+  <text x="450" y="35" class="subtitle-text">Quarterly Productivity Growth Relative to Control Group</text>
+  
+  <!-- Main chart area -->
+  <g transform="translate(80,70)">
+    
+    <!-- Chart background -->
+    <rect x="0" y="0" width="650" height="400" fill="#fdfdfe" stroke="#e8e8e8" stroke-width="0.5"/>
+    
+    <!-- Grid lines -->
+    <!-- Vertical grid lines -->
+    <g>
+      <line x1="65" y1="0" x2="65" y2="400" class="grid-line"/>
+      <line x1="130" y1="0" x2="130" y2="400" class="grid-line"/>
+      <line x1="195" y1="0" x2="195" y2="400" class="grid-line"/>
+      <line x1="260" y1="0" x2="260" y2="400" class="grid-line"/>
+      <line x1="325" y1="0" x2="325" y2="400" class="grid-line"/>
+      <line x1="390" y1="0" x2="390" y2="400" class="grid-line"/>
+      <line x1="455" y1="0" x2="455" y2="400" class="grid-line"/>
+      <line x1="520" y1="0" x2="520" y2="400" class="grid-line"/>
+      <line x1="585" y1="0" x2="585" y2="400" class="grid-line"/>
+      <line x1="650" y1="0" x2="650" y2="400" class="grid-line"/>
+    </g>
+    
+    <!-- Horizontal grid lines -->
+    <g>
+      <line x1="0" y1="66.7" x2="650" y2="66.7" class="grid-line"/>
+      <line x1="0" y1="133.3" x2="650" y2="133.3" class="grid-line"/>
+      <line x1="0" y1="200" x2="650" y2="200" class="grid-line"/>
+      <line x1="0" y1="266.7" x2="650" y2="266.7" class="grid-line"/>
+      <line x1="0" y1="333.3" x2="650" y2="333.3" class="grid-line"/>
+      <line x1="0" y1="400" x2="650" y2="400" class="grid-line"/>
+    </g>
+    
+    <!-- Zero line (0%) -->
+    <line x1="0" y1="266.7" x2="650" y2="266.7" class="zero-line"/>
+    
+    <!-- Treatment implementation line -->
+    <line x1="260" y1="0" x2="260" y2="400" class="treatment-line"/>
+    
+    <!-- Confidence band (95% confidence interval) -->
+    <!-- Upper and lower bounds for confidence intervals -->
+    <path d="M 0 253 L 65 246 L 130 259 L 195 256 L 260 186 L 325 160 L 390 106 L 455 120 L 520 133 L 585 140 L 650 133 
+             L 650 173 L 585 180 L 520 173 L 455 160 L 390 140 L 325 200 L 260 320 L 195 276 L 130 286 L 65 266 L 0 293 Z" 
+          class="confidence-band"/>
+    
+    <!-- Main effect line -->
+    <!-- Data points: -4:-0.2%, -3:0.1%, -2:-0.3%, -1:0%, 0:1.2%, +1:2.1%, +2:2.8%, +3:2.6%, +4:2.4%, +5:2.3%, +6:2.4% -->
+    <!-- Y-scale: 4%=0, 3%=66.7, 2%=133.3, 1%=200, 0%=266.7, -1%=333.3, -2%=400 -->
+    <!-- Points: -4:253, -3:246, -2:286, -1:266.7, 0:186, +1:160, +2:106, +3:120, +4:133, +5:140, +6:133 -->
+    <path d="M 0 253 L 65 246 L 130 286 L 195 266.7 L 260 186 L 325 160 L 390 106 L 455 120 L 520 133 L 585 140 L 650 133" 
+          class="effect-line"/>
+    
+    <!-- Data points -->
+    <!-- Pre-treatment points (quarters -4 to -1) -->
+    <circle cx="0" cy="253" r="4" class="pre-treatment-dot"/>      <!-- -0.2% -->
+    <circle cx="65" cy="246" r="4" class="pre-treatment-dot"/>     <!-- 0.1% -->
+    <circle cx="130" cy="286" r="4" class="pre-treatment-dot"/>    <!-- -0.3% -->
+    <circle cx="195" cy="266.7" r="4" class="pre-treatment-dot"/>  <!-- 0.0% -->
+    
+    <!-- Implementation point (quarter 0) -->
+    <circle cx="260" cy="186" r="5" class="implementation-dot"/>   <!-- 1.2% -->
+    
+    <!-- Post-treatment points (quarters +1 to +6) -->
+    <circle cx="325" cy="160" r="5" class="post-treatment-dot"/>   <!-- 2.1% -->
+    <circle cx="390" cy="106" r="5" class="post-treatment-dot"/>   <!-- 2.8% -->
+    <circle cx="455" cy="120" r="5" class="post-treatment-dot"/>   <!-- 2.6% -->
+    <circle cx="520" cy="133" r="5" class="post-treatment-dot"/>   <!-- 2.4% -->
+    <circle cx="585" cy="140" r="5" class="post-treatment-dot"/>   <!-- 2.3% -->
+    <circle cx="650" cy="133" r="5" class="post-treatment-dot"/>   <!-- 2.4% -->
+    
+    <!-- Axes -->
+    <!-- X-axis -->
+    <line x1="0" y1="400" x2="650" y2="400" class="axis-line"/>
+    
+    <!-- Y-axis -->
+    <line x1="0" y1="0" x2="0" y2="400" class="axis-line"/>
+    
+    <!-- X-axis ticks and labels -->
+    <g>
+      <line x1="0" y1="400" x2="0" y2="410" class="axis-line"/>
+      <text x="0" y="425" text-anchor="middle" class="tick-text">-4</text>
+      
+      <line x1="65" y1="400" x2="65" y2="410" class="axis-line"/>
+      <text x="65" y="425" text-anchor="middle" class="tick-text">-3</text>
+      
+      <line x1="130" y1="400" x2="130" y2="410" class="axis-line"/>
+      <text x="130" y="425" text-anchor="middle" class="tick-text">-2</text>
+      
+      <line x1="195" y1="400" x2="195" y2="410" class="axis-line"/>
+      <text x="195" y="425" text-anchor="middle" class="tick-text">-1</text>
+      
+      <line x1="260" y1="400" x2="260" y2="410" class="axis-line"/>
+      <text x="260" y="425" text-anchor="middle" class="tick-text" font-weight="bold">AI Adoption</text>
+      
+      <line x1="325" y1="400" x2="325" y2="410" class="axis-line"/>
+      <text x="325" y="425" text-anchor="middle" class="tick-text">+1</text>
+      
+      <line x1="390" y1="400" x2="390" y2="410" class="axis-line"/>
+      <text x="390" y="425" text-anchor="middle" class="tick-text">+2</text>
+      
+      <line x1="455" y1="400" x2="455" y2="410" class="axis-line"/>
+      <text x="455" y="425" text-anchor="middle" class="tick-text">+3</text>
+      
+      <line x1="520" y1="400" x2="520" y2="410" class="axis-line"/>
+      <text x="520" y="425" text-anchor="middle" class="tick-text">+4</text>
+      
+      <line x1="585" y1="400" x2="585" y2="410" class="axis-line"/>
+      <text x="585" y="425" text-anchor="middle" class="tick-text">+5</text>
+      
+      <line x1="650" y1="400" x2="650" y2="410" class="axis-line"/>
+      <text x="650" y="425" text-anchor="middle" class="tick-text">+6</text>
+    </g>
+    
+    <!-- Y-axis ticks and labels -->
+    <g>
+      <line x1="-5" y1="400" x2="0" y2="400" class="axis-line"/>
+      <text x="-10" y="405" text-anchor="end" class="tick-text">-2%</text>
+      
+      <line x1="-5" y1="333.3" x2="0" y2="333.3" class="axis-line"/>
+      <text x="-10" y="338" text-anchor="end" class="tick-text">-1%</text>
+      
+      <line x1="-5" y1="266.7" x2="0" y2="266.7" class="axis-line"/>
+      <text x="-10" y="271" text-anchor="end" class="tick-text">0%</text>
+      
+      <line x1="-5" y1="200" x2="0" y2="200" class="axis-line"/>
+      <text x="-10" y="205" text-anchor="end" class="tick-text">1%</text>
+      
+      <line x1="-5" y1="133.3" x2="0" y2="133.3" class="axis-line"/>
+      <text x="-10" y="138" text-anchor="end" class="tick-text">2%</text>
+      
+      <line x1="-5" y1="66.7" x2="0" y2="66.7" class="axis-line"/>
+      <text x="-10" y="71" text-anchor="end" class="tick-text">3%</text>
+      
+      <line x1="-5" y1="0" x2="0" y2="0" class="axis-line"/>
+      <text x="-10" y="5" text-anchor="end" class="tick-text">4%</text>
+    </g>
+    
+    <!-- Axis labels -->
+    <text x="325" y="455" text-anchor="middle" class="axis-label">Quarters Relative to AI Adoption</text>
+    <text x="-45" y="200" text-anchor="middle" transform="rotate(-90, -45, 200)" class="axis-label">Productivity Effect (%)</text>
+    
+    <!-- AI Implementation label -->
+    <text x="268" y="20" class="annotation-text" fill="#e74c3c">AI Implementation</text>
+    
+    <!-- Peak effect annotation -->
+    <text x="400" y="96" class="annotation-text" fill="#e67e22">Peak: 2.8%</text>
+    
+    <!-- Long-run effect annotation -->
+    <text x="580" y="123" class="annotation-text" fill="#e67e22">Long-run: 2.4%</text>
+    
+    <!-- Legend -->
+    <g transform="translate(480, 30)">
+      <circle cx="8" cy="0" r="4" class="pre-treatment-dot"/>
+      <text x="20" y="4" class="legend-text">Pre-treatment</text>
+      
+      <circle cx="8" cy="20" r="4" class="implementation-dot"/>
+      <text x="20" y="24" class="legend-text">Implementation</text>
+      
+      <circle cx="8" cy="40" r="4" class="post-treatment-dot"/>
+      <text x="20" y="44" class="legend-text">Post-treatment</text>
+      
+      <rect x="4" y="56" width="8" height="8" fill="#3498db" fill-opacity="0.25"/>
+      <text x="20" y="64" class="legend-text">95% Confidence Interval</text>
+    </g>
+    
+  </g>
+  
+  <!-- Statistics panel -->
+  <g transform="translate(50, 490)">
+    <rect width="800" height="80" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" rx="3"/>
+    
+    <!-- Left column -->
+    <text x="20" y="20" class="stats-text">
+      <tspan font-weight="bold">Sample:</tspan> 542 firms, 6,504 firm-quarter observations
+    </text>
+    <text x="20" y="35" class="stats-text">
+      <tspan font-weight="bold">Pre-treatment trend test:</tspan> F-statistic = 1.23 (p = 0.307)
+    </text>
+    <text x="20" y="50" class="stats-text">
+      <tspan font-weight="bold">Long-run effect:</tspan>
+    </text>
+    <rect x="115" y="42" width="105" height="12" class="highlight-yellow" rx="2"/>
+    <text x="167" y="51" text-anchor="middle" class="stats-text">2.4% (quarters +4 to +6)</text>
+    
+    <!-- Right column -->
+    <text x="420" y="20" class="stats-text">
+      <tspan font-weight="bold">Method:</tspan> Event study with firm and time fixed effects
+    </text>
+    <text x="420" y="35" class="stats-text">
+      <tspan font-weight="bold">Peak effect:</tspan>
+    </text>
+    <rect x="490" y="27" width="85" height="12" class="highlight-yellow" rx="2"/>
+    <text x="532" y="36" text-anchor="middle" class="stats-text">2.8% at quarter +2</text>
+    
+    <text x="420" y="50" class="stats-text">
+      <tspan font-weight="bold">Parallel trends:</tspan> Supported (pre-treatment coefficients near zero)
+    </text>
+  </g>
+  
+  <!-- Notes -->
+  <g transform="translate(50, 590)">
+    <text x="0" y="0" class="notes-text">
+      <tspan x="0"><tspan font-weight="bold">Notes:</tspan> This figure shows the dynamic treatment effects of AI adoption using event study methodology. Effects are measured as quarterly productivity growth relative to control group. The vertical red line indicates AI</tspan>
+      <tspan x="0" dy="12">implementation (quarter 0). Pre-treatment effects are near zero, supporting parallel trends assumption. Peak effect of 2.8% occurs at quarter 2, with long-run effect stabilizing at 2.4%. 95% confidence intervals shown in</tspan>
+      <tspan x="0" dy="12">blue shading. Sample includes firms that adopted AI between 2019-2022, with at least 4 quarters of pre-treatment data and 6 quarters of post-treatment follow-up.</tspan>
+    </text>
+  </g>
+  
+</svg>
